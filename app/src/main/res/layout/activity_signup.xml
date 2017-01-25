@@ -86,11 +86,30 @@
             android:onClick="showDatePickerDialog"
             android:id="@+id/input_birthdate" />
 
+        <CheckBox
+            android:text="J'accepte de recevoir la newsletter WineFing."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/check_newsletter"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"
+            android:layout_gravity="center"/>
+
+        <CheckBox
+            android:text="J'ai pris connaissance et j'accepte les CGU."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:id="@+id/check_cgu"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"
+            android:layout_gravity="center"/>
+
         <View
             android:layout_width="210dp"
             android:layout_height="1dip"
             android:background="@color/white"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"/>
 
 
@@ -100,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:padding="12dp"
+            android:padding="10dp"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:background="@drawable/button"
