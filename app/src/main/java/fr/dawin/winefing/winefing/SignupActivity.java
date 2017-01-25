@@ -39,6 +39,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //do some stuff for example write on log and update TextField on activity
         Log.e("DatePicker","Date = " + year);
+        month += 1;
         ((Button) findViewById(R.id.input_birthdate)).setHint(day + "/" + month + "/" + year);
     }
 
