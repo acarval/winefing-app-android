@@ -67,7 +67,8 @@
             android:textAllCaps="false"
             android:background="@drawable/button"
             android:text="Se connecter"
-            android:elevation="0dp" />
+            android:elevation="0dp"
+            android:onClick="login"/>
 
         <View
             android:layout_width="210dp"

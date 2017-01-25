@@ -74,15 +74,16 @@
             android:padding="10dp" />
 
 
-        <EditText
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date de naissance"
-            android:inputType="date"
+            android:text=""
             android:ems="10"
             android:layout_marginBottom="10dp"
             android:background="@drawable/input"
             android:padding="10dp"
+            android:onClick="showDatePickerDialog"
             android:id="@+id/input_bithdate" />
 
         <View

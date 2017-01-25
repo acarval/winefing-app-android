@@ -1,6 +1,7 @@
 package fr.dawin.winefing.winefing;
 
 import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,4 +31,15 @@ public class LoginActivity extends AppCompatActivity {
         Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
         startActivityForResult(signupIntent, REQUEST_SIGNUP);
     }
+
+    public void login(View view) {
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+                R.style.WineFingTheme_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Identification...");
+        progressDialog.show();
+    }
+
+
+
 }
