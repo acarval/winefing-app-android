@@ -2,16 +2,21 @@ package fr.dawin.winefing.winefing;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RemoteViews;
 
 import java.util.Calendar;
 
 /**
  * Created by vmorreel on 25/01/2017.
  */
-public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DatePickerFragment extends DialogFragment{
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
@@ -21,10 +26,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return new DatePickerDialog(getActivity(), (SignupActivity)getActivity(), year, month, day);
     }
 
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-        (R.id.input_bithdate)
-    }
 }

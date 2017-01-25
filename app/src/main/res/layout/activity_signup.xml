@@ -84,7 +84,7 @@
             android:background="@drawable/input"
             android:padding="10dp"
             android:onClick="showDatePickerDialog"
-            android:id="@+id/input_bithdate" />
+            android:id="@+id/input_birthdate" />
 
         <View
             android:layout_width="210dp"
