@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signUp(View view) {
-        Intent signupIntent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+        Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
         startActivityForResult(signupIntent, REQUEST_SIGNUP);
     }
 
