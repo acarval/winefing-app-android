@@ -17,9 +17,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.concurrent.ExecutionException;
@@ -104,15 +101,10 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         TasksManagerRegister json = new TasksManagerRegister();
         try {
             String result = json.execute(link,firstName,lastName, email, password).get();
-            if(result == "" || result == null){
+            if(result == "" || result == null || result == "error"){
                 progressDialog.dismiss();
                 Toast.makeText(getBaseContext(), "Erreur lors de l'inscription", Toast.LENGTH_LONG).show();
             } else{
-                final User user = new User();
-                JSONObject jObject = null;
-                jObject = new JSONObject(result);
-                String token = jObject.getString("token");
-                user.setUserAttr(jObject.getString("token"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
                 new android.os.Handler().postDelayed(
                         new Runnable() {
                             public void run() {
@@ -125,17 +117,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        onSignupSuccess(_signupButton);
-                        progressDialog.dismiss();
-                    }
-                }, 2000);
     }
 
 
@@ -146,7 +128,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
     }
 
     public void onSignupFailed(Button _signupButton) {
-        Toast.makeText(getBaseContext(), "La connexion a échoué.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Veuillez vérifier la saisie des différents champs.", Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
     }

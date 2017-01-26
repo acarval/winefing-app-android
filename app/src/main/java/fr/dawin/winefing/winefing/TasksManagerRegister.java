@@ -43,7 +43,8 @@ class TasksManagerRegister extends AsyncTask<String,Void,String> {
                     .appendQueryParameter("firstName", firstName)
                     .appendQueryParameter("lastName", lastName)
                     .appendQueryParameter("email", email)
-                    .appendQueryParameter("password", password);
+                    .appendQueryParameter("password", password)
+                    .appendQueryParameter("roles", "ROLE_USER");
             String query = builder.build().getEncodedQuery();
 
             OutputStream os = urlConnection.getOutputStream();
@@ -57,7 +58,7 @@ class TasksManagerRegister extends AsyncTask<String,Void,String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "404 Error";
+        return "error";
     }
 
     protected String readStream(InputStream in) throws IOException {

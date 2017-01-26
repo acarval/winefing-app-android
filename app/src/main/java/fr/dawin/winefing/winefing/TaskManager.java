@@ -31,7 +31,7 @@ class TasksManagerGet extends AsyncTask<String,Void,String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "404 Error";
+        return "error";
     }
 
     protected String readStream(InputStream in) throws IOException {
