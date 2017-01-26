@@ -105,10 +105,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
-
-                // TODO: Implementer la logique d'inscription
-                // En gros, on finish() l'activité du signup et on connecte le user.
-                this.finish();
+                // Ici, on laisse le user se connecter tout seul
+            }
+            else {
+                Toast.makeText(getBaseContext(), "Erreur lors de l'inscription, veuillez réessayer.", Toast.LENGTH_LONG).show();
             }
         }
     }
