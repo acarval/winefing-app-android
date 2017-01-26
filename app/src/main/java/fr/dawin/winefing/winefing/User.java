@@ -2,14 +2,13 @@ package fr.dawin.winefing.winefing;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
 
 
 /**
  * Created by Greg on 26/01/2017.
  */
 
-public class User extends AppCompatActivity {
+public class User implements Parcelable {
     private String token;
     private String prenom;
     private String nom;
@@ -49,11 +48,13 @@ public class User extends AppCompatActivity {
 
     /** Deux méthodes afin de convertir cette classe en Parcelable
      * Afin de permettre de la transferer d'activité en activité grace au Bundle **/
+    @Override
     public int describeContents()
     {
         return 0;
     }
 
+    @Override
     public void writeToParcel(Parcel dest, int flags)
     {
         dest.writeString(token);
