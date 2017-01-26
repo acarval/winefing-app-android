@@ -5,14 +5,33 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="WineFingTheme" parent="AppTheme" >
+    <style name="WineFingTheme_NoActionBar" parent="AppTheme">
         <item name="android:colorForeground">@android:color/background_light</item>
         <item name="android:textColorPrimary">@color/Oil</item>
-        <item name = "android:windowActionBar">false</item>
-        <item name = "android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="WineFingTheme_ActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorForeground">@android:color/background_light</item>
+        <item name="android:textColorPrimary">@color/Oil</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="WineFingTheme.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="WineFingTheme_NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="WineFingTheme_NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

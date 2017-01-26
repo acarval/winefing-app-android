@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="WineFingTheme" parent="AppTheme">
+    <style name="WineFingTheme_NoActionBar" parent="AppTheme">
         <item name="android:colorForeground">@android:color/background_light</item>
         <item name="android:navigationBarColor">@color/Oil</item>
         <item name="android:statusBarColor">?android:attr/colorPrimary</item>

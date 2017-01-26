@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_user_dashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="fr.dawin.winefing.winefing.UserDashboardActivity"
+    tools:showIn="@layout/app_bar_user_dashboard">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+
+        <Button
+            android:text="Mes réservations"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="28dp"
+            android:textColor="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/btn_reservation"
+            android:background="@drawable/mesreservations_background"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Découvrir"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/btn_discover"
+            android:background="@drawable/decouvrir_background"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</RelativeLayout>

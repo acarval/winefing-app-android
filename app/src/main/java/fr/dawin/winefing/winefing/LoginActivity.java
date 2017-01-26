@@ -13,6 +13,23 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
@@ -29,13 +46,45 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setBackgroundDrawableResource(R.drawable.login_background);
     }
 
+
+    public void signUp(View view) {
+        Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
+        startActivityForResult(signupIntent, REQUEST_SIGNUP);
+    }
+
+
     public void login(View view) {
-        final EditText editEmail = (EditText) findViewById(R.id.input_email);
-        final EditText editPassword = (EditText) findViewById(R.id.input_password);
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        String email = editEmail.getText().toString();
-        String plainPassword = editPassword.getText().toString();
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
+        final Button _loginButton = (Button)findViewById(R.id.btn_login);
+        final EditText _emailInput = (EditText) findViewById(R.id.input_email);
+        final EditText _passwordInput = (EditText) findViewById(R.id.input_password);
+
+        Log.d(TAG, "Login");
+
+        if (!validate(_emailInput, _passwordInput)) {
+            onLoginFailed(_loginButton);
+            return;
+        }
+
+        _loginButton.setEnabled(false);
+
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.WineFingTheme_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Identification...");
+        progressDialog.show();
+
+
+
+        String email = _emailInput.getText().toString();
+        String plainPassword = _passwordInput.getText().toString();
+
+
+        // TODO: =====================================================
+        // TODO: Logique de connection (à la base avec le webservice).
+        // TODO: =====================================================
         String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users/tokens.json";
 
         TasksManagerPost json = new TasksManagerPost();
@@ -59,12 +108,63 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        onLoginSuccess(_loginButton);
+                        progressDialog.dismiss();
+                    }
+                }, 2000);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_SIGNUP) {
+            if (resultCode == RESULT_OK) {
 
-    public void signUp(View view) {
-        Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
+                // TODO: Implementer la logique d'inscription
+                // En gros, on finish() l'activité du signup et on connecte le user.
+                this.finish();
+            }
+        }
+    }
+
+    public void onLoginSuccess(Button _loginButton) {
+        _loginButton.setEnabled(true);
+        Intent signupIntent = new Intent(getApplicationContext(), UserDashboardActivity.class);
         startActivityForResult(signupIntent, REQUEST_SIGNUP);
+        finish();
     }
 
+
+    private void onLoginFailed(Button _loginButton) {
+        Toast.makeText(getBaseContext(), "La connexion a échoué", Toast.LENGTH_LONG).show();
+        _loginButton.setEnabled(true);
+    }
+
+
+    private boolean validate(EditText _emailInput, EditText _passwordInput) {
+        boolean valid = true;
+
+        String email = _emailInput.getText().toString();
+        String password = _passwordInput.getText().toString();
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            _emailInput.setError("Entrez une adresse mail valide.");
+            valid = false;
+        }
+        else {
+            _emailInput.setError(null);
+        }
+
+        if (password.isEmpty()) {
+            _passwordInput.setError("Vous devez saisir votre mot de passe !");
+            valid = false;
+        } else {
+            _passwordInput.setError(null);
+        }
+        return valid;
+    }
 }
