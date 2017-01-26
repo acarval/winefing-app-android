@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(View view) {
         InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
         final Button _loginButton = (Button)findViewById(R.id.btn_login);
@@ -77,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-
         String email = _emailInput.getText().toString();
         String plainPassword = _passwordInput.getText().toString();
 
@@ -91,7 +89,8 @@ public class LoginActivity extends AppCompatActivity {
         try {
             String result = json.execute(link,email,plainPassword).get();
             if(result == "" || result == null){
-                // afficher erreur
+
+                Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
 
             } else{
                 User user = new User();
