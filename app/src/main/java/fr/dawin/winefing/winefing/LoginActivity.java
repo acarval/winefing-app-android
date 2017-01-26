@@ -1,25 +1,11 @@
 package fr.dawin.winefing.winefing;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
+import android.os.Parcelable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -27,8 +13,12 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -81,24 +71,28 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailInput.getText().toString();
         String plainPassword = _passwordInput.getText().toString();
 
-
-        // TODO: =====================================================
-        // TODO: Logique de connection (à la base avec le webservice).
-        // TODO: =====================================================
         String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users/tokens.json";
 
         TasksManagerPost json = new TasksManagerPost();
         try {
             String result = json.execute(link,email,plainPassword).get();
             if(result == "" || result == null){
-                // afficher erreur
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe", Toast.LENGTH_LONG).show();
 
             } else{
-                User user = new User();
+                final User user = new User();
                 JSONObject jObject = null;
                 jObject = new JSONObject(result);
                 String token = jObject.getString("token");
                 user.setUserAttr(jObject.getString("token"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                onLoginSuccess(_loginButton,user);
+                                progressDialog.dismiss();
+                            }
+                        }, 2000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -107,16 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        onLoginSuccess(_loginButton);
-                        progressDialog.dismiss();
-                    }
-                }, 2000);
     }
 
     @Override
@@ -131,9 +115,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void onLoginSuccess(Button _loginButton) {
+    public void onLoginSuccess(Button _loginButton, User user) {
         _loginButton.setEnabled(true);
         Intent signupIntent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+        signupIntent.putExtra("user", (Parcelable) user);
         startActivityForResult(signupIntent, REQUEST_SIGNUP);
         finish();
     }
