@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mot de passe"
-                android:id="@+id/input_passwordConfirm"
+                android:id="@+id/input_password"
                 android:inputType="textPassword"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/input"

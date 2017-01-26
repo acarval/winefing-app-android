@@ -15,15 +15,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by Greg on 25/01/2017.
+ * Created by Greg on 26/01/2017.
  */
 
-class TasksManagerPost extends AsyncTask<String,Void,String> {
+class TasksManagerRegister extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String request = params[0];
-        String email = params[1];
-        String plainPassword = params[2];
+        String firstName = params[1];
+        String lastName = params[2];
+        String email = params[3];
+        String password = params[4];
 
         URL url = null;
         try {
@@ -38,8 +40,10 @@ class TasksManagerPost extends AsyncTask<String,Void,String> {
             urlConnection.setRequestMethod("POST");
 
             Uri.Builder builder = new Uri.Builder()
+                    .appendQueryParameter("firstName", firstName)
+                    .appendQueryParameter("lastName", lastName)
                     .appendQueryParameter("email", email)
-                    .appendQueryParameter("plainPassword", plainPassword);
+                    .appendQueryParameter("password", password);
             String query = builder.build().getEncodedQuery();
 
             OutputStream os = urlConnection.getOutputStream();

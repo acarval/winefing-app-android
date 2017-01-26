@@ -1,14 +1,12 @@
 package fr.dawin.winefing.winefing;
 
-import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -17,14 +15,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.concurrent.ExecutionException;
 
 public class SignupActivity extends AppCompatActivity implements OnDateSetListener {
 
@@ -79,13 +77,13 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
 
         final EditText _firstNameInput = (EditText) findViewById(R.id.input_firstname);
         final EditText _lastNameInput = (EditText) findViewById(R.id.input_lastname);
-        final EditText _emailInputConfirm = (EditText) findViewById(R.id.input_emailConfirm);
-        final EditText _plainPasswordInput = (EditText) findViewById(R.id.input_passwordConfirm);
+        final EditText _emailInput = (EditText) findViewById(R.id.input_emailConfirm);
+        final EditText _plainPasswordInput = (EditText) findViewById(R.id.input_password);
         final EditText _plainPasswordInputConfirm = (EditText) findViewById(R.id.input_confirm_password);
 
         Log.d(TAG, "Signup");
 
-        if (!validate(_firstNameInput, _lastNameInput, _emailInputConfirm, _plainPasswordInput, _plainPasswordInputConfirm, _birthDateButton)) {
+        if (!validate(_firstNameInput, _lastNameInput, _emailInput, _plainPasswordInput, _plainPasswordInputConfirm, _birthDateButton)) {
             onSignupFailed(_signupButton);
             return;
         }
@@ -96,7 +94,40 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         progressDialog.setMessage("Création du compte...");
         progressDialog.show();
 
-        // TODO: Implement your own signup logic here.
+        String firstName = _firstNameInput.getText().toString();
+        String lastName = _lastNameInput.getText().toString();
+        String email = _emailInput.getText().toString();
+        String password = _plainPasswordInput.getText().toString();
+
+        String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users.json";
+
+        TasksManagerRegister json = new TasksManagerRegister();
+        try {
+            String result = json.execute(link,firstName,lastName, email, password).get();
+            if(result == "" || result == null){
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(), "Erreur lors de l'inscription", Toast.LENGTH_LONG).show();
+            } else{
+                final User user = new User();
+                JSONObject jObject = null;
+                jObject = new JSONObject(result);
+                String token = jObject.getString("token");
+                user.setUserAttr(jObject.getString("token"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                onSignupSuccess(_signupButton);
+                                progressDialog.dismiss();
+                            }
+                        }, 2000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -120,12 +151,12 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         _signupButton.setEnabled(true);
     }
 
-    public boolean validate(EditText _firstNameInput, EditText _lastNameInput, EditText _emailInputConfirm, EditText _plainPasswordInput, EditText _plainPasswordInputConfirm, Button _birthDateButton) {
+    public boolean validate(EditText _firstNameInput, EditText _lastNameInput, EditText _emailInput, EditText _plainPasswordInput, EditText _plainPasswordInputConfirm, Button _birthDateButton) {
         boolean valid = true;
 
         String firstname = _firstNameInput.getText().toString();
         String lastname = _lastNameInput.getText().toString();
-        String email = _emailInputConfirm.getText().toString();
+        String email = _emailInput.getText().toString();
         String plainPassword = _plainPasswordInput.getText().toString();
         String reEnterPassword = _plainPasswordInputConfirm.getText().toString();
         String birthDate = _birthDateButton.getHint().toString();
@@ -145,10 +176,10 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailInputConfirm.setError("Entrez une adresse email valide.");
+            _emailInput.setError("Entrez une adresse email valide.");
             valid = false;
         } else {
-            _emailInputConfirm.setError(null);
+            _emailInput.setError(null);
         }
 
         if (birthDate.isEmpty() || HAS_MINIMUM_AGE==false) {
