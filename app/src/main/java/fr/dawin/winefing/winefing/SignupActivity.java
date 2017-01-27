@@ -101,10 +101,15 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         TasksManagerRegister json = new TasksManagerRegister();
         try {
             String result = json.execute(link,firstName,lastName, email, password).get();
-            if(result == "" || result == null || result == "error"){
+            if(result == "" || result == null || result == "error_server"){
                 progressDialog.dismiss();
-                Toast.makeText(getBaseContext(), "Erreur lors de l'inscription", Toast.LENGTH_LONG).show();
-            } else{
+                _signupButton.setEnabled(true);
+                Toast.makeText(getBaseContext(), "Erreur lors de l'inscription, veuillez réessayer", Toast.LENGTH_LONG).show();
+            }else if(result == "error_mail_existing"){
+                progressDialog.dismiss();
+                _signupButton.setEnabled(true);
+                Toast.makeText(getBaseContext(), "Cet email possède déjà un compte", Toast.LENGTH_LONG).show();
+            }else{
                 new android.os.Handler().postDelayed(
                         new Runnable() {
                             public void run() {

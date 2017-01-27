@@ -54,11 +54,15 @@ class TasksManagerRegister extends AsyncTask<String,Void,String> {
             writer.flush();
             writer.close();
             os.close();
-            return readStream(urlConnection.getInputStream());
+            int statusCode = urlConnection.getResponseCode();
+            if(statusCode == 409)
+                return "error_mail_existing";
+            else
+                return readStream(urlConnection.getInputStream());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "error";
+        return "error_server";
     }
 
     protected String readStream(InputStream in) throws IOException {
