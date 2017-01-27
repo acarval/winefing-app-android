@@ -75,10 +75,10 @@ public class LoginActivity extends AppCompatActivity {
 
         String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users/tokens.json";
 
-        TasksManagerPost json = new TasksManagerPost();
+        TasksManagerLogin json = new TasksManagerLogin();
         try {
             String result = json.execute(link,email,plainPassword).get();
-            if(result == "" || result == null){
+            if(result == "" || result == null || result == "error"){
                 progressDialog.dismiss();
                 Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
 

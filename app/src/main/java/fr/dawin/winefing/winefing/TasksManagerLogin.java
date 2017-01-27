@@ -18,7 +18,7 @@ import java.net.URL;
  * Created by Greg on 25/01/2017.
  */
 
-class TasksManagerPost extends AsyncTask<String,Void,String> {
+class TasksManagerLogin extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String request = params[0];
@@ -53,7 +53,7 @@ class TasksManagerPost extends AsyncTask<String,Void,String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "404 Error";
+        return "error";
     }
 
     protected String readStream(InputStream in) throws IOException {
