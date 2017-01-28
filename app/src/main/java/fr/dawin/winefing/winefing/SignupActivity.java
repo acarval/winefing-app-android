@@ -37,6 +37,21 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         getWindow().setBackgroundDrawableResource(R.drawable.signup_background);
+
+
+        Intent cguIntent = new Intent(getApplicationContext(), LegalMentionsActivity.class);
+        startActivityForResult(cguIntent, 1000);
+    }
+
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        // on récupère le statut de retour de l'activité des CGU (Mentions légales) c'est à dire l'activité numéro 1000
+        if(requestCode==1000){
+            // si le code de retour est égal à 1 on stoppe l'activité du SignUp et on retourne au Login
+            if(resultCode==1){
+                finish();
+            }
+        }
+        super.onActivityResult (requestCode, resultCode, data);
     }
 
     public void showDatePickerDialog(View view) {
@@ -171,6 +186,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         }
 
         if (birthDate.isEmpty() || HAS_MINIMUM_AGE==false) {
+            _birthDateButton.setError("Vous devez avoir plus de 18 ans.");
             valid = false;
         }
 

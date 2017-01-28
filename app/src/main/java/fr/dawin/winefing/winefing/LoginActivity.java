@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             String result = json.execute(link,email,plainPassword).get();
             if(result == "" || result == null || result == "error"){
                 progressDialog.dismiss();
+                _loginButton.setEnabled(true);
                 Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
 
             } else{
