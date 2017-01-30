@@ -1,16 +1,14 @@
 package fr.dawin.winefing.winefing;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -27,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,23 @@ public class LoginActivity extends AppCompatActivity {
         final Button _loginButton = (Button)findViewById(R.id.btn_login);
         final EditText _emailInput = (EditText) findViewById(R.id.input_email);
         final EditText _passwordInput = (EditText) findViewById(R.id.input_password);
+        SharedPreferences loginPreferences = null;
+        SharedPreferences.Editor loginPrefsEditor = null;
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+        loginPrefsEditor.clear();
+        loginPrefsEditor.commit();
+
+        String email="";
+        String plainPassword ="";
+
+        email = loginPreferences.getString("email", "");
+        if(loginPreferences.getString("email", "")!= "")
+            plainPassword = loginPreferences.getString("password", "");
+        else {
+            email = _emailInput.getText().toString();
+            plainPassword = _passwordInput.getText().toString();
+            }
 
         Log.d(TAG, "Login");
 
@@ -69,10 +86,6 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Identification...");
         progressDialog.show();
 
-
-        String email = _emailInput.getText().toString();
-        String plainPassword = _passwordInput.getText().toString();
-
         String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users/tokens.json";
 
         TasksManagerLogin json = new TasksManagerLogin();
@@ -80,14 +93,17 @@ public class LoginActivity extends AppCompatActivity {
             String result = json.execute(link,email,plainPassword).get();
             if(result == "" || result == null || result == "error"){
                 progressDialog.dismiss();
+                _loginButton.setEnabled(true);
                 Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
 
             } else{
                 final User user = new User();
                 JSONObject jObject = null;
                 jObject = new JSONObject(result);
-                String token = jObject.getString("token");
-                user.setUserAttr(jObject.getString("token"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+                user.setUserAttr(jObject.getInt("id"), jObject.getString("token"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+                loginPrefsEditor.putString("email", email);
+                loginPrefsEditor.putString("plainPassword", plainPassword);
+                loginPrefsEditor.commit();
                 new android.os.Handler().postDelayed(
                         new Runnable() {
                             public void run() {

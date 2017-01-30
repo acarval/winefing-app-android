@@ -1,7 +1,6 @@
 package fr.dawin.winefing.winefing;
 
 import android.app.DatePickerDialog.OnDateSetListener;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;

@@ -9,6 +9,7 @@ import android.os.Parcelable;
  */
 
 public class User implements Parcelable {
+    private int id;
     private String token;
     private String prenom;
     private String nom;
@@ -20,6 +21,7 @@ public class User implements Parcelable {
     }
 
     public User(User user){
+        id = user.getId();
         token = user.getToken();
         prenom = user.getPrenom();
         nom = user.getNom();
@@ -28,7 +30,8 @@ public class User implements Parcelable {
         description = user.getDescription();
     }
 
-    public User(String token, String prenom, String nom, String telephone, String dateNaissance, String description, String photoProfil) {
+    public User(int id, String token, String prenom, String nom, String telephone, String dateNaissance, String description, String photoProfil) {
+        this.id = id;
         this.token = token;
         this.prenom = prenom;
         this.nom = nom;
@@ -37,7 +40,8 @@ public class User implements Parcelable {
         this.description = description;
     }
 
-    public void setUserAttr(String token, String prenom, String nom, String telephone, String dateNaissance, String description){
+    public void setUserAttr(int id, String token, String prenom, String nom, String telephone, String dateNaissance, String description){
+        this.id = id;
         this.token = token;
         this.prenom = prenom;
         this.nom = nom;
@@ -57,6 +61,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {
+        dest.writeInt(id);
         dest.writeString(token);
         dest.writeString(prenom);
         dest.writeString(nom);
@@ -81,12 +86,21 @@ public class User implements Parcelable {
     };
 
     public User(Parcel in) {
+        this.id = in.readInt();
         this.token = in.readString();
         this.prenom= in.readString();
         this.nom = in.readString();
         this.telephone = in.readString();
         this.dateNaissance = in.readString();
         this.description = in.readString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getToken() {
