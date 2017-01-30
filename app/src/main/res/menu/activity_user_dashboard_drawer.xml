@@ -14,15 +14,15 @@
             android:id="@+id/nav_discover"
             android:icon="@drawable/ic_menu_discover"
             android:title="Découvrir" />
-    </group>
+        <item
+            android:id="@+id/nav_winelist"
+            android:icon="@drawable/ic_menu_winelist"
+            android:title="WineList" />
 
-    <item android:title="Paramètres">
-        <menu>
-            <item
-                android:id="@+id/nav_disconnect"
-                android:icon="@drawable/ic_menu_disconnect"
-                android:title="Déconnexion" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_disconnect"
+            android:icon="@drawable/ic_menu_disconnect"
+            android:title="Déconnexion" />
+    </group>
 
 </menu>

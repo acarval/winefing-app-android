@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#af5a5e</color>
     <color name="colorAccent">#e01b20</color>
     <color name="Oil">#333333</color>
+    <color name="OilDark">#262626</color>
     <color name="white">#ffffff</color>
+    <color name="grey">#dbdbdb</color>
+    <color name="greyDark">#c9c9c9</color>
 </resources>
