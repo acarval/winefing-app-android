@@ -65,7 +65,7 @@
             android:layout_marginBottom="24dp"
             android:textColor="@color/white"
             android:textAllCaps="false"
-            android:background="@drawable/button"
+            android:background="@drawable/button_red"
             android:text="Se connecter"
             android:elevation="0dp"
             android:onClick="login" />
@@ -97,7 +97,7 @@
             android:layout_marginBottom="24dp"
             android:textColor="@color/white"
             android:textAllCaps="false"
-            android:background="@drawable/button"
+            android:background="@drawable/button_red"
             android:id="@+id/btn_signup"
             android:text="Inscription"
             android:onClick="signUp"/>

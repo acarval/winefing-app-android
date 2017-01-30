@@ -46,8 +46,12 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         // on récupère le statut de retour de l'activité des CGU (Mentions légales) c'est à dire l'activité numéro 1000
         if(requestCode==1000){
             // si le code de retour est égal à 1 on stoppe l'activité du SignUp et on retourne au Login
-            if(resultCode==1){
+            if(resultCode==1) {
                 finish();
+            }
+            else {
+                Boolean accepted = data.getBooleanExtra("accepted", true);
+                Log.e(TAG, accepted.toString());
             }
         }
         super.onActivityResult (requestCode, resultCode, data);
