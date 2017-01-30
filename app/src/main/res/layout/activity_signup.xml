@@ -108,16 +108,6 @@
                 android:buttonTint="@color/white"
                 android:layout_gravity="center"/>
 
-            <CheckBox
-                android:text="J'ai pris connaissance et j'accepte les CGU."
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:id="@+id/check_cgu"
-                android:textColor="@color/white"
-                android:buttonTint="@color/white"
-                android:layout_gravity="center"/>
-
             <View
                 android:layout_width="210dp"
                 android:layout_height="1dip"
