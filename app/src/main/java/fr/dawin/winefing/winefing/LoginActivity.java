@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,12 +37,57 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         getWindow().setBackgroundDrawableResource(R.drawable.login_background);
+
+        String email="";
+        String plainPassword ="";
+
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+
+
+        email = loginPreferences.getString("email", "");
+        if(email.length() != 0 && email != null) {
+            plainPassword = loginPreferences.getString("plainPassword", "");
+            logUserAutomatically(email, plainPassword);
+        }
     }
 
 
     public void signUp(View view) {
         Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
         startActivityForResult(signupIntent, REQUEST_SIGNUP);
+    }
+
+    public void logUserAutomatically(String email, String plainPassword){
+
+        String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users/tokens.json";
+
+        TasksManagerLogin json = new TasksManagerLogin();
+        String result = null;
+        try {
+            result = json.execute(link,email,plainPassword).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        final User user = new User();
+            JSONObject jObject = null;
+        try {
+            jObject = new JSONObject(result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Intent signupIntent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+        signupIntent.putExtra("user", (Parcelable) user);
+        startActivityForResult(signupIntent, REQUEST_SIGNUP);
+        finish();
     }
 
 
@@ -54,25 +98,9 @@ public class LoginActivity extends AppCompatActivity {
         final Button _loginButton = (Button)findViewById(R.id.btn_login);
         final EditText _emailInput = (EditText) findViewById(R.id.input_email);
         final EditText _passwordInput = (EditText) findViewById(R.id.input_password);
-        SharedPreferences loginPreferences = null;
-        SharedPreferences.Editor loginPrefsEditor = null;
-        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-        loginPrefsEditor = loginPreferences.edit();
-        loginPrefsEditor.clear();
-        loginPrefsEditor.commit();
 
-        String email="";
-        String plainPassword ="";
-
-        email = loginPreferences.getString("email", "");
-        if(loginPreferences.getString("email", "")!= "")
-            plainPassword = loginPreferences.getString("password", "");
-        else {
-            email = _emailInput.getText().toString();
-            plainPassword = _passwordInput.getText().toString();
-            }
-
-        Log.d(TAG, "Login");
+        String email = _emailInput.getText().toString();
+        String plainPassword = _passwordInput.getText().toString();
 
         if (!validate(_emailInput, _passwordInput)) {
             onLoginFailed(_loginButton);
@@ -100,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                 final User user = new User();
                 JSONObject jObject = null;
                 jObject = new JSONObject(result);
-                user.setUserAttr(jObject.getInt("id"), jObject.getString("token"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+                user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
                 loginPrefsEditor.putString("email", email);
                 loginPrefsEditor.putString("plainPassword", plainPassword);
                 loginPrefsEditor.commit();

@@ -10,7 +10,7 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
     private int id;
-    private String token;
+    //private String token;
     private String prenom;
     private String nom;
     private String telephone;
@@ -22,7 +22,7 @@ public class User implements Parcelable {
 
     public User(User user){
         id = user.getId();
-        token = user.getToken();
+        //token = user.getToken();
         prenom = user.getPrenom();
         nom = user.getNom();
         telephone = user.getTelephone();
@@ -30,19 +30,20 @@ public class User implements Parcelable {
         description = user.getDescription();
     }
 
-    public User(int id, String token, String prenom, String nom, String telephone, String dateNaissance, String description, String photoProfil) {
+    //token
+    public User(int id, String prenom, String nom, String telephone, String dateNaissance, String description, String photoProfil) {
         this.id = id;
-        this.token = token;
+        //this.token = token;
         this.prenom = prenom;
         this.nom = nom;
         this.telephone = telephone;
         this.dateNaissance = dateNaissance;
         this.description = description;
     }
-
-    public void setUserAttr(int id, String token, String prenom, String nom, String telephone, String dateNaissance, String description){
+    // token
+    public void setUserAttr(int id, String prenom, String nom, String telephone, String dateNaissance, String description){
         this.id = id;
-        this.token = token;
+        //this.token = token;
         this.prenom = prenom;
         this.nom = nom;
         this.telephone = telephone;
@@ -62,7 +63,7 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel dest, int flags)
     {
         dest.writeInt(id);
-        dest.writeString(token);
+       // dest.writeString(token);
         dest.writeString(prenom);
         dest.writeString(nom);
         dest.writeString(telephone);
@@ -87,7 +88,7 @@ public class User implements Parcelable {
 
     public User(Parcel in) {
         this.id = in.readInt();
-        this.token = in.readString();
+       // this.token = in.readString();
         this.prenom= in.readString();
         this.nom = in.readString();
         this.telephone = in.readString();
@@ -103,14 +104,14 @@ public class User implements Parcelable {
         this.id = id;
     }
 
-    public String getToken() {
+   /* public String getToken() {
         return token;
     }
-
-    public void setToken(String token) {
+*/
+  /*  public void setToken(String token) {
         this.token = token;
     }
-
+*/
     public String getPrenom() {
         return prenom;
     }
