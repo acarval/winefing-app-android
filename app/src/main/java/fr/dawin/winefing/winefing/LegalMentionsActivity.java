@@ -36,7 +36,6 @@ public class LegalMentionsActivity extends AppCompatActivity {
     }
 
     public void backToLogin(View view) {
-
         setResult(1);
         finish();
     }

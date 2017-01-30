@@ -155,6 +155,9 @@ public class LoginActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Ici, on laisse le user se connecter tout seul
             }
+            else if (resultCode == 2){
+
+            }
             else {
                 Toast.makeText(getBaseContext(), "Erreur lors de l'inscription, veuillez réessayer.", Toast.LENGTH_LONG).show();
             }

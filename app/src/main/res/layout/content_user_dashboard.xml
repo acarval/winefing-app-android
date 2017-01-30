@@ -19,6 +19,7 @@
 
         <Button
             android:text="Mes réservations"
+            android:onClick="listBooking"
             android:textStyle="bold"
             android:textAllCaps="false"
             android:textSize="28dp"
@@ -31,6 +32,7 @@
 
         <Button
             android:text="Découvrir"
+            android:onClick="listProperties"
             android:textStyle="bold"
             android:textSize="30dp"
             android:textAllCaps="false"

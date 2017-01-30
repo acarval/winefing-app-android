@@ -1,5 +1,6 @@
 package fr.dawin.winefing.winefing;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -88,5 +89,13 @@ public class UserDashboardActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void listProperties(View view) {
+        Intent propertiesIntent = new Intent(getApplicationContext(), LegalMentionsActivity.class);
+        startActivity(propertiesIntent);
+    }
+
+    public void listBooking(View view) {
     }
 }
