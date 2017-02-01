@@ -18,17 +18,19 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.concurrent.ExecutionException;
-
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
+    public Controller monController;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        monController = new Controller();
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -60,17 +62,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void logUserAutomatically(String email, String plainPassword){
 
-        String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users/tokens.json";
+        String result = monController.login(email,plainPassword);
 
-        TasksManagerLogin json = new TasksManagerLogin();
-        String result = null;
-        try {
-            result = json.execute(link,email,plainPassword).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
         final User user = new User();
             JSONObject jObject = null;
         try {
@@ -114,39 +107,37 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Identification...");
         progressDialog.show();
 
-        String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users/tokens.json";
+        String result = monController.login(email,plainPassword);
 
-        TasksManagerLogin json = new TasksManagerLogin();
-        try {
-            String result = json.execute(link,email,plainPassword).get();
-            if(result == "" || result == null || result == "error"){
-                progressDialog.dismiss();
-                _loginButton.setEnabled(true);
-                Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
+        if(result.equals("") || result == null || result.equals("error_server")){
+            progressDialog.dismiss();
+            _loginButton.setEnabled(true);
+            Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
 
-            } else{
-                final User user = new User();
-                JSONObject jObject = null;
+        } else{
+            final User user = new User();
+            JSONObject jObject = null;
+            try {
                 jObject = new JSONObject(result);
-                user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
-                loginPrefsEditor.putString("email", email);
-                loginPrefsEditor.putString("plainPassword", plainPassword);
-                loginPrefsEditor.commit();
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                onLoginSuccess(_loginButton,user);
-                                progressDialog.dismiss();
-                            }
-                        }, 2000);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            try {
+                user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            loginPrefsEditor.putString("email", email);
+            loginPrefsEditor.putString("plainPassword", plainPassword);
+            loginPrefsEditor.commit();
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+                            onLoginSuccess(_loginButton, user);
+                            progressDialog.dismiss();
+                        }
+                    }, 2000);
+            }
     }
 
     @Override
