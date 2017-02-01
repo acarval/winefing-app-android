@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,13 +16,19 @@ import android.widget.TextView;
 
 public class UserDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    protected android.app.FragmentManager fragmentManager = getFragmentManager();
 
+    private static final String TAG = "UserDashboardActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new UserDashboardFragment())
+                .commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,15 +81,27 @@ public class UserDashboardActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile) {
-            // Handle the camera action
+        if (id == R.id.nav_home) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new UserDashboardFragment())
+                    .commit();
+
+        } else if (id == R.id.nav_profile) {
+
+
         } else if (id == R.id.nav_booking) {
 
+
         } else if (id == R.id.nav_discover) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new DiscoverFragment())
+                    .commit();
 
         } else if (id == R.id.nav_winelist) {
 
+
         } else if (id == R.id.nav_disconnect) {
+
 
         }
 
@@ -91,11 +110,11 @@ public class UserDashboardActivity extends AppCompatActivity
         return true;
     }
 
-    public void listProperties(View view) {
-        Intent propertiesIntent = new Intent(getApplicationContext(), LegalMentionsActivity.class);
-        startActivity(propertiesIntent);
+    public void bookingList(View view) {
+        Log.e(TAG, "booking");
     }
 
-    public void listBooking(View view) {
+    public void propertiesList(View view) {
+        Log.e(TAG, "properties");
     }
 }

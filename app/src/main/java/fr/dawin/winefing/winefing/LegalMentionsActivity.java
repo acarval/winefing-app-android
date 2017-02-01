@@ -12,6 +12,7 @@ import android.view.WindowManager;
 
 public class LegalMentionsActivity extends AppCompatActivity {
 
+    private static final String TAG = "LegalMentionsActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
