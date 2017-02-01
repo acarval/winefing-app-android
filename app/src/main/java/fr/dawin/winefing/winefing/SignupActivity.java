@@ -50,6 +50,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         if(requestCode==1000){
             // si le code de retour est égal à 1 on stoppe l'activité du SignUp et on retourne au Login
             if(resultCode==1) {
+                setResult(2);
                 finish();
             }
             else {

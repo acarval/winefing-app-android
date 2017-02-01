@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menus">
+        <item >Mon profil</item>
+        <item >Mes réservations</item>
+        <item >Découvrir</item>
+        <item >WineList</item>
+        <item >Déconnexion</item>
+    </string-array>
+</resources>
