@@ -45,6 +45,12 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         startActivityForResult(cguIntent, 1000);
     }
 
+    @Override
+    public void onBackPressed() {
+        setResult(2);
+        finish();
+    }
+
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         // on récupère le statut de retour de l'activité des CGU (Mentions légales) c'est à dire l'activité numéro 1000
         if(requestCode==1000){
