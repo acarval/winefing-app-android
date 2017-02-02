@@ -51,8 +51,7 @@ public class Controller {
         StrictMode.setThreadPolicy(policy);
 
         monService = new RequestManager();
-        //String url = API_URL + "/mobile/properties/"+ LANGUE +".json";
-        String url = "https://dev.winefing.fr/winefing/web/app_dev.php/api/mobile/properties/fr.json";
+        String url = API_URL + "/mobile/properties/"+ LANGUE +".json";
         return monService.get(url);
     }
 
