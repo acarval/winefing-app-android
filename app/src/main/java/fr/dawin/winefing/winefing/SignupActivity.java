@@ -19,12 +19,13 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.concurrent.ExecutionException;
 
 public class SignupActivity extends AppCompatActivity implements OnDateSetListener {
 
     private static final String TAG = "SignupActivity";
     public static boolean HAS_MINIMUM_AGE = false;
+    public Controller monController;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         getWindow().setBackgroundDrawableResource(R.drawable.signup_background);
+
+        monController = new Controller();
 
 
         Intent cguIntent = new Intent(getApplicationContext(), LegalMentionsActivity.class);
@@ -116,16 +119,13 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         String email = _emailInput.getText().toString();
         String password = _plainPasswordInput.getText().toString();
 
-        String link = "http://dawin.winefing.fr/winefing/web/app_dev.php/api/users.json";
+        String result = monController.register(firstName, lastName, email, password);
 
-        TasksManagerRegister json = new TasksManagerRegister();
-        try {
-            String result = json.execute(link,firstName,lastName, email, password).get();
-            if(result == "" || result == null || result == "error_server"){
+            if(result.equals("") || result == null || result.equals("error_server")){
                 progressDialog.dismiss();
                 _signupButton.setEnabled(true);
                 Toast.makeText(getBaseContext(), "Erreur lors de l'inscription, veuillez réessayer", Toast.LENGTH_LONG).show();
-            }else if(result == "error_mail_existing"){
+            }else if(result.equals( "409")){
                 progressDialog.dismiss();
                 _signupButton.setEnabled(true);
                 Toast.makeText(getBaseContext(), "Cet email possède déjà un compte", Toast.LENGTH_LONG).show();
@@ -138,11 +138,6 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
                             }
                         }, 2000);
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 
 

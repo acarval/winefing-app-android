@@ -1,6 +1,7 @@
 package fr.dawin.winefing.winefing;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -101,8 +102,16 @@ public class UserDashboardActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_disconnect) {
+            SharedPreferences loginPreferences;
+            SharedPreferences.Editor loginPrefsEditor;
+            loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+            loginPrefsEditor = loginPreferences.edit();
+            loginPrefsEditor.clear();
+            loginPrefsEditor.commit();
 
-
+            Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(loginIntent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -20,4 +20,6 @@ public class DiscoverFragment extends Fragment {
         myView = inflater.inflate(R.layout.fragment_discover, container, false);
         return myView;
     }
+
+    
 }
