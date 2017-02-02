@@ -64,7 +64,6 @@ public class DiscoverFragment extends Fragment {
             try {
                 for(int i=0;i<jObject.length()-1;i++) {
                     JSONObject json_data = jObject.getJSONObject(String.valueOf(i));
-                    System.out.println(json_data);
                     //properties.add(new Property(json_data.getInt("id"), json_data.getString("nom"), json_data.getInt("nbConcours"), json_data.getString("urlBanniere")));
                 }
             } catch (JSONException e) {
