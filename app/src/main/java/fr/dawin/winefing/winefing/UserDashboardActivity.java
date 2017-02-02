@@ -1,5 +1,6 @@
 package fr.dawin.winefing.winefing;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,9 +21,19 @@ public class UserDashboardActivity extends AppCompatActivity
     protected android.app.FragmentManager fragmentManager = getFragmentManager();
 
     private static final String TAG = "UserDashboardActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FragmentManager fm = getFragmentManager();
+        fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if(getFragmentManager().getBackStackEntryCount() == 0) finish();
+            }
+        });
+
         setContentView(R.layout.activity_user_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -39,6 +50,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
 
         Bundle extra = getIntent().getExtras();
         User user = extra.getParcelable("user");
@@ -128,5 +140,8 @@ public class UserDashboardActivity extends AppCompatActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, new DiscoverFragment())
                 .commit();
+
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        navView.setCheckedItem(R.id.nav_discover);
     }
 }

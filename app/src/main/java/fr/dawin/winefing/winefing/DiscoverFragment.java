@@ -72,6 +72,8 @@ public class DiscoverFragment extends Fragment {
         }
     }
 
+
+
     //TODO: à supprimer, utile que pour les tests
     private List<Property> testProperties(){
         List<Property> properties = new ArrayList<Property>();
