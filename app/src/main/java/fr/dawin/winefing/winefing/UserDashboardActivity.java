@@ -116,5 +116,8 @@ public class UserDashboardActivity extends AppCompatActivity
 
     public void propertiesList(View view) {
         Log.e(TAG, "properties");
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new DiscoverFragment())
+                .commit();
     }
 }
