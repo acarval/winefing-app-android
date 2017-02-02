@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 public class DiscoverFragment extends Fragment {
     View myView;
+    public Controller monController;
+
 
     @Nullable
     @Override
@@ -21,5 +23,12 @@ public class DiscoverFragment extends Fragment {
         return myView;
     }
 
-    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        monController = new Controller();
+
+        String result = monController.getProperties();
+        System.out.println(result);
+    }
 }

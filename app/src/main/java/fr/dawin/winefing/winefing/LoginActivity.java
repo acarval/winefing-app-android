@@ -18,6 +18,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.text.TextUtils.isDigitsOnly;
+
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
@@ -109,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String result = monController.login(email,plainPassword);
 
-        if(result.equals("") || result == null || result.equals("error_server")){
+        if(result.equals("") || result == null || result.equals("error_server") || isDigitsOnly(result)){
             progressDialog.dismiss();
             _loginButton.setEnabled(true);
             Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
