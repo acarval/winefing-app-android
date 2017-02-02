@@ -12,6 +12,9 @@ public class Property implements Parcelable {
 
     private String nomDomaine;
     private String nomRegion;
+    private String urlImage;
+    private float prixMin;
+    private float prixMax;
 
     private Boolean vinRouge;
     private Boolean vinBlanc;
@@ -26,9 +29,11 @@ public class Property implements Parcelable {
 
     public Property(Property property) {
         id = property.getId();
-        //token = user.getToken();
         nomDomaine = property.getDomainName();
         nomRegion = property.getRegionName();
+        urlImage = property.getUrlImage();
+        prixMin = property.getPrixMin();
+        prixMax = property.getPrixMax();
         vinRouge = property.getVinRouge();
         vinBlanc = property.getVinBlanc();
         vinRose = property.getVinRose();
@@ -36,29 +41,19 @@ public class Property implements Parcelable {
         vinBulles = property.getVinBulles();
     }
 
-    //TODO: Supprimer ce constructeur, utile juste pour des tests.
-    public Property(int id, String domainName, String regionName, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux, Boolean vinBulles) {
+    public Property(int id, String domainName, String regionName, String urlImage, float prixMin, float prixMax, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux, Boolean vinBulles) {
         this.id = id;
         this.nomDomaine = domainName;
         this.nomRegion = regionName;
+        this.urlImage = urlImage;
+        this.prixMin = prixMin;
+        this.prixMax = prixMax;
         this.vinRouge = vinRouge;
         this.vinBlanc = vinBlanc;
         this.vinRose = vinRose;
         this.vinSpiritueux = vinSpiritueux;
         this.vinBulles = vinBulles;
     }
-
-    public void setPropertyAttr(int id, String domainName, String regionName, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux, Boolean vinBulles) {
-        this.id = id;
-        this.nomDomaine = domainName;
-        this.nomRegion = regionName;
-        this.vinRouge = vinRouge;
-        this.vinBlanc = vinBlanc;
-        this.vinRose = vinRose;
-        this.vinSpiritueux = vinSpiritueux;
-        this.vinBulles = vinBulles;
-    }
-
 
     @Override
     public int describeContents() {
@@ -70,6 +65,9 @@ public class Property implements Parcelable {
         dest.writeInt(id);
         dest.writeString(nomDomaine);
         dest.writeString(nomRegion);
+        dest.writeString(urlImage);
+        dest.writeFloat(prixMin);
+        dest.writeFloat(prixMax);
     }
 
     public static final Creator<Property> CREATOR = new Creator<Property>() {
@@ -88,6 +86,9 @@ public class Property implements Parcelable {
         id = in.readInt();
         nomDomaine = in.readString();
         nomRegion = in.readString();
+        urlImage = in.readString();
+        prixMin = in.readFloat();
+        prixMax = in.readFloat();
     }
 
 
@@ -102,6 +103,14 @@ public class Property implements Parcelable {
     public String getRegionName() {
         return nomRegion;
     }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public float getPrixMin(){ return prixMin; };
+
+    public float getPrixMax(){ return prixMax; };
 
     public Boolean getVinRouge() {
         return vinRouge;
@@ -134,6 +143,12 @@ public class Property implements Parcelable {
     public void setNomRegion(String nomRegion) {
         this.nomRegion = nomRegion;
     }
+
+    public void setUrlImage() {this.urlImage = urlImage; }
+
+    public void setPrixMin(){ this.prixMin = prixMin;}
+
+    public void setPrixMax(){ this.prixMax = prixMax;}
 
     public void setVinRouge(Boolean vinRouge) {
         this.vinRouge = vinRouge;
