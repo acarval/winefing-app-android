@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String result = monController.login(email,plainPassword);
 
-        if(result.equals("") || result == null || result.equals("error_server")){
+        if(result.equals("") || result == null || result.equals("error_server") || result.equals("204")){
             progressDialog.dismiss();
             _loginButton.setEnabled(true);
             Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();

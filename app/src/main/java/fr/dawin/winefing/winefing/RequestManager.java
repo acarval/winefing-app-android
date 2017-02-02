@@ -59,7 +59,7 @@ public class RequestManager {
         return "error_server";
     }
 
-    public String get(String url, HashMap<String,String> params)
+    public String get(String url)
     {
         URL request = null;
         try {
@@ -71,27 +71,11 @@ public class RequestManager {
 
         try {
             urlConnection = (HttpURLConnection) request.openConnection();
-            urlConnection.setDoOutput(true);
-            urlConnection.setRequestMethod("POST");
-
-            Uri.Builder builder = new Uri.Builder();
-            for(String param : params.keySet()){
-                builder.appendQueryParameter(param, params.get(param));
-            }
-            String query = builder.build().getEncodedQuery();
-
-            OutputStream os = urlConnection.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
-            writer.write(query);
-            writer.flush();
-            writer.close();
-            os.close();
             return readStream(urlConnection.getInputStream());
         } catch (Exception e) {
             e.printStackTrace();
+            return "error_server";
         }
-        return "error_server";
     }
 
     public String delete(String url, HashMap<String,String> params){

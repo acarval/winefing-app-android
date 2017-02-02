@@ -48,6 +48,17 @@ public class Property implements Parcelable {
         this.vinBulles = vinBulles;
     }
 
+    public void setPropertyAttr(int id, String domainName, String regionName, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux, Boolean vinBulles) {
+        this.id = id;
+        this.nomDomaine = domainName;
+        this.nomRegion = regionName;
+        this.vinRouge = vinRouge;
+        this.vinBlanc = vinBlanc;
+        this.vinRose = vinRose;
+        this.vinSpiritueux = vinSpiritueux;
+        this.vinBulles = vinBulles;
+    }
+
 
     @Override
     public int describeContents() {

@@ -3,6 +3,7 @@ package fr.dawin.winefing.winefing;
 import android.os.StrictMode;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * Created by Greg on 31/01/2017.
@@ -11,11 +12,11 @@ import java.util.HashMap;
 // 1 méthode par requête à faire
 public class Controller {
 
-    public static final String API_URL = "http://dawin.winefing.fr/winefing/web/app_dev.php/api";
+    public static final String API_URL = "https://dev.winefing.fr/winefing/web/app_dev.php/api";
     public RequestManager monService;
 
     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); // Permet de réaliser les requêtes en Synchrone
-
+    public static final String LANGUE = Locale.getDefault().getDisplayLanguage();
 
 
     public String login(String email, String plainPassword){
@@ -49,10 +50,10 @@ public class Controller {
     public String getProperties(){
         StrictMode.setThreadPolicy(policy);
 
-        String url = API_URL + "/domains.json";
-        HashMap<String, String> requestParams = new HashMap<String,String>();
-
-        return monService.get(url, requestParams);
+        monService = new RequestManager();
+        //String url = API_URL + "/mobile/properties/"+ LANGUE +".json";
+        String url = "https://dev.winefing.fr/winefing/web/app_dev.php/api/mobile/properties/fr.json";
+        return monService.get(url);
     }
 
     public String getLocationsByProperties(String idProperty){
@@ -61,6 +62,6 @@ public class Controller {
         String url = API_URL + "/";
         HashMap<String, String> requestParams = new HashMap<String, String>();
 
-        return monService.get(url, requestParams);
+        return monService.get(url);
     }
 }
