@@ -74,8 +74,8 @@ public class RequestManager {
             return readStream(urlConnection.getInputStream());
         } catch (Exception e) {
             e.printStackTrace();
+            return "error_server";
         }
-        return "error_server";
     }
 
     public String delete(String url, HashMap<String,String> params){

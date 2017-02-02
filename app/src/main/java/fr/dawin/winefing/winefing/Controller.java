@@ -12,7 +12,7 @@ import java.util.Locale;
 // 1 méthode par requête à faire
 public class Controller {
 
-    public static final String API_URL = "http://dawin.winefing.fr/winefing/web/app_dev.php/api";
+    public static final String API_URL = "https://dev.winefing.fr/winefing/web/app_dev.php/api";
     public RequestManager monService;
 
     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); // Permet de réaliser les requêtes en Synchrone
@@ -51,7 +51,8 @@ public class Controller {
         StrictMode.setThreadPolicy(policy);
 
         monService = new RequestManager();
-        String url = API_URL + "/mobile/properties/"+ LANGUE +".json";
+        //String url = API_URL + "/mobile/properties/"+ LANGUE +".json";
+        String url = "https://dev.winefing.fr/winefing/web/app_dev.php/api/mobile/properties/fr.json";
         return monService.get(url);
     }
 
