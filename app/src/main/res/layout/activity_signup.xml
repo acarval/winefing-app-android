@@ -12,7 +12,7 @@
     android:fitsSystemWindows="false"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="fr.dawin.winefing.winefing.SignupActivity">
+    tools:context="fr.dawin.winefing.winefing.activities.SignupActivity">
 
     <ScrollView
         android:layout_width="match_parent"
