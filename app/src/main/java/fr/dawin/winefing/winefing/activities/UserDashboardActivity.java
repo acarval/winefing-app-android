@@ -1,6 +1,5 @@
-package fr.dawin.winefing.winefing;
+package fr.dawin.winefing.winefing.activities;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -17,6 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import fr.dawin.winefing.winefing.R;
+import fr.dawin.winefing.winefing.User;
+import fr.dawin.winefing.winefing.fragments.DiscoverFragment;
+import fr.dawin.winefing.winefing.fragments.UserDashboardFragment;
 
 public class UserDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,4 +1,4 @@
-package fr.dawin.winefing.winefing;
+package fr.dawin.winefing.winefing.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import fr.dawin.winefing.winefing.R;
 
 /**
  * Created by vmorreel on 02/02/2017.
@@ -39,6 +41,7 @@ public class PropertyAdapter extends ArrayAdapter<fr.dawin.winefing.winefing.Pro
 
             viewHolder.domainName = (TextView) convertView.findViewById(R.id.domain_name);
             viewHolder.regionName = (TextView) convertView.findViewById(R.id.region_name);
+            viewHolder.priceLabel = (TextView) convertView.findViewById(R.id.price_label);
 
             viewHolder.winePic1 = (ImageView) convertView.findViewById(R.id.wine_pic_1);
             viewHolder.winePic2 = (ImageView) convertView.findViewById(R.id.wine_pic_2);
@@ -55,6 +58,7 @@ public class PropertyAdapter extends ArrayAdapter<fr.dawin.winefing.winefing.Pro
 
         viewHolder.domainName.setText(property.getDomainName());
         viewHolder.regionName.setText(property.getRegionName());
+        viewHolder.priceLabel.setText("à partir de " + String.valueOf(property.getPrixMin()));
 
         //TODO:Gérer l'image principale du chateau
         //viewHolder.mainImage.setImageDrawable(new ColorDrawable(property.getColor()));
@@ -93,6 +97,7 @@ public class PropertyAdapter extends ArrayAdapter<fr.dawin.winefing.winefing.Pro
 
         public TextView domainName;
         public TextView regionName;
+        public TextView priceLabel;
 
         public ImageView winePic1;
         public ImageView winePic2;

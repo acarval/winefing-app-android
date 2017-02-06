@@ -1,4 +1,4 @@
-package fr.dawin.winefing.winefing;
+package fr.dawin.winefing.winefing.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -16,6 +16,11 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import fr.dawin.winefing.winefing.Controller;
+import fr.dawin.winefing.winefing.Property;
+import fr.dawin.winefing.winefing.adapters.PropertyAdapter;
+import fr.dawin.winefing.winefing.R;
 
 import static android.text.TextUtils.isDigitsOnly;
 

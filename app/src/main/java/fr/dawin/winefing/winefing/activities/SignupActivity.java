@@ -1,4 +1,4 @@
-package fr.dawin.winefing.winefing;
+package fr.dawin.winefing.winefing.activities;
 
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
@@ -19,6 +19,10 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import fr.dawin.winefing.winefing.Controller;
+import fr.dawin.winefing.winefing.R;
+import fr.dawin.winefing.winefing.fragments.DatePickerFragment;
 
 public class SignupActivity extends AppCompatActivity implements OnDateSetListener {
 

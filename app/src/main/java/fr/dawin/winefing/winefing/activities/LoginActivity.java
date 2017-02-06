@@ -1,4 +1,4 @@
-package fr.dawin.winefing.winefing;
+package fr.dawin.winefing.winefing.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +17,10 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import fr.dawin.winefing.winefing.Controller;
+import fr.dawin.winefing.winefing.R;
+import fr.dawin.winefing.winefing.User;
 
 public class LoginActivity extends AppCompatActivity {
 

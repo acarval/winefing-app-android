@@ -1,16 +1,13 @@
-package fr.dawin.winefing.winefing;
+package fr.dawin.winefing.winefing.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.RemoteViews;
 
 import java.util.Calendar;
+
+import fr.dawin.winefing.winefing.activities.SignupActivity;
 
 /**
  * Created by vmorreel on 25/01/2017.

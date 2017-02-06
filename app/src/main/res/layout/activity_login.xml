@@ -12,7 +12,7 @@
     android:fitsSystemWindows="false"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context="fr.dawin.winefing.winefing.LoginActivity">
+    tools:context="fr.dawin.winefing.winefing.activities.LoginActivity">
 
     <LinearLayout
         android:orientation="vertical"
