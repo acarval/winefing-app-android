@@ -58,6 +58,7 @@ public class PropertyAdapter extends ArrayAdapter<fr.dawin.winefing.winefing.Pro
 
         viewHolder.domainName.setText(property.getDomainName());
         viewHolder.regionName.setText(property.getRegionName());
+        viewHolder.priceLabel.setText("à partir de " + String.valueOf(property.getPrixMin()));
 
         //TODO:Gérer l'image principale du chateau
         //viewHolder.mainImage.setImageDrawable(new ColorDrawable(property.getColor()));
