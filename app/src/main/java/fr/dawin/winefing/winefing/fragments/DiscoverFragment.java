@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,8 +18,8 @@ import java.util.Iterator;
 
 import fr.dawin.winefing.winefing.Controller;
 import fr.dawin.winefing.winefing.Property;
-import fr.dawin.winefing.winefing.adapters.PropertyAdapter;
 import fr.dawin.winefing.winefing.R;
+import fr.dawin.winefing.winefing.adapters.PropertyAdapter;
 
 import static android.text.TextUtils.isDigitsOnly;
 
@@ -105,13 +104,6 @@ public class DiscoverFragment extends Fragment {
             mListView.setAdapter(adapter);
         }
         return myView;
-    }
-
-    private boolean hasVin(JSONArray characts) {
-        for(int i=0; i<characts.length(); i++){
-            return false;
-        }
-        return true;
     }
 }
 
