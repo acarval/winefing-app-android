@@ -1,6 +1,8 @@
 package fr.dawin.winefing.winefing;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -38,9 +40,10 @@ public class UserDashboardActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, new UserDashboardFragment())
-                .commit();
+        FragmentTransaction tx = fragmentManager.beginTransaction();
+        tx.replace(R.id.content_frame, new UserDashboardFragment())
+            .addToBackStack(TAG)
+            .commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,10 +66,12 @@ public class UserDashboardActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        navView.setCheckedItem(R.id.nav_home);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            moveTaskToBack(true);
+            super.onBackPressed();
         }
     }
 
@@ -93,11 +98,12 @@ public class UserDashboardActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentTransaction tx = fragmentManager.beginTransaction();
 
         if (id == R.id.nav_home) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new UserDashboardFragment())
-                    .commit();
+            tx.replace(R.id.content_frame, new UserDashboardFragment(), TAG)
+                .addToBackStack(TAG)
+                .commit();
 
         } else if (id == R.id.nav_profile) {
 
@@ -106,9 +112,9 @@ public class UserDashboardActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_discover) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new DiscoverFragment())
-                    .commit();
+            tx.replace(R.id.content_frame, new DiscoverFragment(), TAG)
+                .addToBackStack(TAG)
+                .commit();
 
         } else if (id == R.id.nav_winelist) {
 
@@ -133,13 +139,16 @@ public class UserDashboardActivity extends AppCompatActivity
 
     public void bookingList(View view) {
         Log.e(TAG, "booking");
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        navView.setCheckedItem(R.id.nav_booking);
     }
 
     public void propertiesList(View view) {
         Log.e(TAG, "properties");
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, new DiscoverFragment())
-                .commit();
+        FragmentTransaction tx = fragmentManager.beginTransaction();
+        tx.replace(R.id.content_frame, new DiscoverFragment(), TAG)
+            .addToBackStack(TAG)
+            .commit();
 
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_discover);
