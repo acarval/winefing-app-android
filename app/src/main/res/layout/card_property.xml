@@ -16,6 +16,23 @@
         />
 
     <TextView
+        android:id="@+id/myImageViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/main_image"
+        android:layout_alignBottom="@id/main_image"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="bottom|left"
+        android:textSize="20dp"
+        android:text="à partir de 180€/nuit"
+        android:background="@drawable/label_price"
+        android:textColor="@color/white" />
+
+    <TextView
         android:id="@+id/domain_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
