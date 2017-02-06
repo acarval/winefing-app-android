@@ -109,12 +109,15 @@ public class LoginActivity extends AppCompatActivity {
 
         String result = monController.login(email,plainPassword);
 
-        if(result.equals("") || result == null || result.equals("error_server") || result.equals("204")){
+        if(result.equals("204")) {
             progressDialog.dismiss();
             _loginButton.setEnabled(true);
             Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
-
-        } else{
+        }else if(result.equals("error_server")){
+            progressDialog.dismiss();
+            _loginButton.setEnabled(true);
+            Toast.makeText(getBaseContext(), "Erreur de connexion au serveur.", Toast.LENGTH_LONG).show();
+        }else{
             final User user = new User();
             JSONObject jObject = null;
             try {
