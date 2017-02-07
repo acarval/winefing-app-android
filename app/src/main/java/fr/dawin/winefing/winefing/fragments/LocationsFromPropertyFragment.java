@@ -38,31 +38,6 @@ public class LocationsFromPropertyFragment extends Fragment {
 
         mViewPager.setAdapter(adapterView);
 
-       /* final Handler handler = new Handler();
-
-        final Runnable Update = new Runnable() {
-            public void run() {
-                for (int i = 0; i < adapterView.getCount(); i++){
-                    mViewPager.setCurrentItem(i, true);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Log.e(TAG, String.valueOf(i));
-                }
-            }
-        };
-
-        Timer swipeTimer = new Timer();
-
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 5000, 5000);*/
-
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
@@ -81,7 +56,6 @@ public class LocationsFromPropertyFragment extends Fragment {
                             mViewPager.setCurrentItem(value, true);
                         }
                     });
-                    Log.e(TAG, String.valueOf(i));
                 }
             }
         };
