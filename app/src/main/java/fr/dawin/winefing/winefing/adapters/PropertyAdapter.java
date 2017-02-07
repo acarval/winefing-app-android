@@ -1,8 +1,6 @@
 package fr.dawin.winefing.winefing.adapters;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.util.Property;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +11,18 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.dawin.winefing.winefing.R;
+import fr.dawin.winefing.winefing.classes.Property;
 
 /**
  * Created by vmorreel on 02/02/2017.
  */
 
-public class PropertyAdapter extends ArrayAdapter<fr.dawin.winefing.winefing.Property> {
+public class PropertyAdapter extends ArrayAdapter<Property> {
 
     private static final int NO_WIDTH = 0;
 
     //tweets est la liste des models à afficher
-    public PropertyAdapter(Context context, List<fr.dawin.winefing.winefing.Property> properties) {
+    public PropertyAdapter(Context context, List<Property> properties) {
         super(context, 0, properties);
     }
 
@@ -52,13 +51,13 @@ public class PropertyAdapter extends ArrayAdapter<fr.dawin.winefing.winefing.Pro
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
-        fr.dawin.winefing.winefing.Property property = getItem(position);
+        Property property = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
 
         viewHolder.domainName.setText(property.getDomainName());
         viewHolder.regionName.setText(property.getRegionName());
-        viewHolder.priceLabel.setText("à partir de " + String.valueOf(property.getPrixMin()));
+        viewHolder.priceLabel.setText("à partir de " + String.valueOf(Math.round(property.getPrixMin())) + "€/nuit");
 
         //TODO:Gérer l'image principale du chateau
         //viewHolder.mainImage.setImageDrawable(new ColorDrawable(property.getColor()));
