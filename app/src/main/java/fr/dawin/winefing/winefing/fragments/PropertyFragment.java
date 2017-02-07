@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import fr.dawin.winefing.winefing.tools.Controller;
 import fr.dawin.winefing.winefing.classes.Property;
@@ -61,19 +62,46 @@ public class PropertyFragment extends Fragment {
                 e.printStackTrace();
             }
             try {
-                for (int i = 0; i < jObject.length() - 1; i++) {
-                    JSONObject json_data = jObject.getJSONObject(String.valueOf(i));
-                    properties.add(new Property(json_data.getInt("id"),
-                            "nomDomaine",//json_data.getString("domain['name']"),
-                            "nomRegion",//json_data.getString("domain[wine_region][name]"),
-                            json_data.getString("media_presentation"),
-                            BigDecimal.valueOf(json_data.getDouble("min_price")).floatValue(),
-                            BigDecimal.valueOf(json_data.getDouble("max_price")).floatValue(),
-                            true,//hasVin(json_data.getString("charachteristic_values[][characteristic][code]")),
-                            true,//hasVin(json_data.getString("charachteristic_values[][characteristic][code]")),
-                            false,//hasVin(json_data.getString("charachteristic_values[][characteristic][code]")),
-                            false,//hasVin(json_data.getString("charachteristic_values[][characteristic][code]")),
-                            true/*hasVin(json_data.getString("charachteristic_values[][characteristic][code]"))*/));
+
+                Iterator<String> iter = jObject.keys();
+                while (iter.hasNext()) {
+                    String key = iter.next();
+                    JSONObject json_data = (JSONObject) jObject.get(key);
+
+                    int id = json_data.getInt("id");
+
+                    String domain_name;
+                    if(json_data.getJSONObject("domain").has("name"))
+                        domain_name = json_data.getJSONObject("domain").getString("name");
+                    else
+                        domain_name = "";
+
+                    String region_name;
+                    if(json_data.getJSONObject("domain").getJSONObject("wine_region").has("name"))
+                        region_name = json_data.getJSONObject("domain").getJSONObject("wine_region").getString("name");
+                    else
+                        region_name = "";
+
+                    String url_image;
+                    if(json_data.has("media_presentation"))
+                        url_image = json_data.getString("media_presentation");
+                    else
+                        url_image = "";
+
+                    float min_price;
+                    if(json_data.has("min_price"))
+                        min_price = BigDecimal.valueOf(json_data.getDouble("min_price")).floatValue();
+                    else
+                        min_price = 0;
+
+                    float max_price;
+                    if(json_data.has("max_price"))
+                        max_price = BigDecimal.valueOf(json_data.getDouble("max_price")).floatValue();
+                    else
+                        max_price = 0;
+
+
+                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, true, true, false, true, false));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -102,13 +130,6 @@ public class PropertyFragment extends Fragment {
 
         }
         return myView;
-    }
-
-    private boolean hasVin(String typeVin) {
-        if(typeVin != null)
-            return true;
-        else
-            return false;
     }
 }
 

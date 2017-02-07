@@ -64,27 +64,31 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(signupIntent, REQUEST_SIGNUP);
     }
 
-    public void logUserAutomatically(String email, String plainPassword){
+    public void logUserAutomatically(String email, String plainPassword) {
 
-        String result = monController.login(email,plainPassword);
+        String result = monController.login(email, plainPassword);
+        if (result.equals("error_server")) {
+            Toast.makeText(getBaseContext(), "Erreur de connexion au serveur.", Toast.LENGTH_LONG).show();
+        } else {
 
-        final User user = new User();
+            final User user = new User();
             JSONObject jObject = null;
-        try {
-            jObject = new JSONObject(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            try {
+                jObject = new JSONObject(result);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-        Intent signupIntent = new Intent(getApplicationContext(), UserDashboardActivity.class);
-        signupIntent.putExtra("user", (Parcelable) user);
-        startActivityForResult(signupIntent, REQUEST_SIGNUP);
-        finish();
+            Intent signupIntent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+            signupIntent.putExtra("user", (Parcelable) user);
+            startActivityForResult(signupIntent, REQUEST_SIGNUP);
+            finish();
+        }
     }
 
 
