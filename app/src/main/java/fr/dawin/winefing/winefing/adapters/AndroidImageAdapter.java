@@ -29,8 +29,8 @@ public class AndroidImageAdapter extends PagerAdapter {
     }
 
     private int[] sliderImagesId = new int[]{
-            R.drawable.camarsac, R.drawable.mesreservations_background, R.drawable.decouvrir_background,
-            R.drawable.camarsac, R.drawable.mesreservations_background, R.drawable.decouvrir_background
+            R.drawable.mesreservations_background, R.drawable.decouvrir_background,
+            R.drawable.mesreservations_background, R.drawable.decouvrir_background
     };
 
     @Override

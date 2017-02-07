@@ -20,6 +20,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="210dp" />
 
+            <TextView
+                android:id="@+id/domain_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Oil"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Château du Clos du Prince"
+                android:layout_centerHorizontal="true" />
+
 
             <ListView
                 android:id="@+id/properties_list"
