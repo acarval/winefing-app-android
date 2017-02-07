@@ -18,8 +18,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import fr.dawin.winefing.winefing.R;
-import fr.dawin.winefing.winefing.User;
-import fr.dawin.winefing.winefing.fragments.DiscoverFragment;
+import fr.dawin.winefing.winefing.classes.User;
+import fr.dawin.winefing.winefing.fragments.PropertyFragment;
 import fr.dawin.winefing.winefing.fragments.UserDashboardFragment;
 
 public class UserDashboardActivity extends AppCompatActivity
@@ -36,7 +36,7 @@ public class UserDashboardActivity extends AppCompatActivity
         fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
-                if(getFragmentManager().getBackStackEntryCount() == 0) finish();
+                if (getFragmentManager().getBackStackEntryCount() == 0) finish();
             }
         });
 
@@ -46,8 +46,8 @@ public class UserDashboardActivity extends AppCompatActivity
 
         FragmentTransaction tx = fragmentManager.beginTransaction();
         tx.replace(R.id.content_frame, new UserDashboardFragment())
-            .addToBackStack(TAG)
-            .commit();
+                .addToBackStack(TAG)
+                .commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,7 +63,7 @@ public class UserDashboardActivity extends AppCompatActivity
         User user = extra.getParcelable("user");
 
         View v = navigationView.getHeaderView(0);
-        TextView tv_userName = (TextView ) v.findViewById(R.id.textView_username);
+        TextView tv_userName = (TextView) v.findViewById(R.id.textView_username);
         tv_userName.setText(user.getPrenom() + " " + user.getNom());
     }
 
@@ -106,8 +106,8 @@ public class UserDashboardActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             tx.replace(R.id.content_frame, new UserDashboardFragment(), TAG)
-                .addToBackStack(TAG)
-                .commit();
+                    .addToBackStack(TAG)
+                    .commit();
 
         } else if (id == R.id.nav_profile) {
 
@@ -116,9 +116,9 @@ public class UserDashboardActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_discover) {
-            tx.replace(R.id.content_frame, new DiscoverFragment(), TAG)
-                .addToBackStack(TAG)
-                .commit();
+            tx.replace(R.id.content_frame, new PropertyFragment(), TAG)
+                    .addToBackStack(TAG)
+                    .commit();
 
         } else if (id == R.id.nav_winelist) {
 
@@ -150,9 +150,9 @@ public class UserDashboardActivity extends AppCompatActivity
     public void propertiesList(View view) {
         Log.e(TAG, "properties");
         FragmentTransaction tx = fragmentManager.beginTransaction();
-        tx.replace(R.id.content_frame, new DiscoverFragment(), TAG)
-            .addToBackStack(TAG)
-            .commit();
+        tx.replace(R.id.content_frame, new PropertyFragment(), TAG)
+                .addToBackStack(TAG)
+                .commit();
 
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_discover);

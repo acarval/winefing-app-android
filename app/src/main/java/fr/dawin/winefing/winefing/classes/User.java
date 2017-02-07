@@ -1,4 +1,4 @@
-package fr.dawin.winefing.winefing;
+package fr.dawin.winefing.winefing.classes;
 
 import android.os.Parcel;
 import android.os.Parcelable;

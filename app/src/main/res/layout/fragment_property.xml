@@ -16,7 +16,7 @@
         android:gravity="center"/>
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/properties_list"
         android:layout_below="@id/properties_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

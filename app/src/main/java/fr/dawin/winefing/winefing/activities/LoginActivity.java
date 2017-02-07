@@ -18,9 +18,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.dawin.winefing.winefing.Controller;
+import fr.dawin.winefing.winefing.tools.Controller;
 import fr.dawin.winefing.winefing.R;
-import fr.dawin.winefing.winefing.User;
+import fr.dawin.winefing.winefing.classes.User;
 
 public class LoginActivity extends AppCompatActivity {
 
