@@ -7,10 +7,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.adapters.AndroidImageAdapter;
+import fr.dawin.winefing.winefing.classes.Property;
 
 /**
  * Created by vmorreel on 06/02/2017.
@@ -18,6 +18,7 @@ import fr.dawin.winefing.winefing.adapters.AndroidImageAdapter;
 
 public class LocationsFromPropertyFragment extends Fragment {
     View myView;
+    Property property;
 
     @Nullable
     @Override
@@ -28,6 +29,11 @@ public class LocationsFromPropertyFragment extends Fragment {
         AndroidImageAdapter adapterView = new AndroidImageAdapter(this.getActivity());
         mViewPager.setAdapter(adapterView);
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            property = bundle.getParcelable("property");
+        }
+        System.out.println(property.getDomainName());
         return myView;
     }
 

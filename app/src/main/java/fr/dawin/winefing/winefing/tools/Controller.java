@@ -54,13 +54,13 @@ public class Controller {
         String url = API_URL + "/mobile/properties/"+ LANGUE +".json";
         return monService.get(url);
     }
+    
 
-    public String getLocationsByProperties(String idProperty){
+    public String getPropertyImagesPath(){
         StrictMode.setThreadPolicy(policy);
 
-        String url = API_URL + "/";
-        HashMap<String, String> requestParams = new HashMap<String, String>();
-
+        monService = new RequestManager();
+        String url = API_URL + "/property/media/path.json";
         return monService.get(url);
     }
 }

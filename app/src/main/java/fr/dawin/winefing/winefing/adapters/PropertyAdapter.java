@@ -22,10 +22,18 @@ import fr.dawin.winefing.winefing.classes.Property;
 public class PropertyAdapter extends ArrayAdapter<Property> {
 
     private static final int NO_WIDTH = 0;
+    //public Controller monController;
+    public static final String IMAGE_PATH = "https://dev.winefing.fr/winefing/web/Resources/pictures/property/";
 
-    //tweets est la liste des models à afficher
     public PropertyAdapter(Context context, List<Property> properties) {
         super(context, 0, properties);
+
+        //Pour récupérer l'URL où sont stockées les image depuis le webservice
+        /*monController = new Controller();
+        image_path = monController.getPropertyImagesPath();
+        image_path = image_path.replace("\\","");
+        image_path = image_path.substring(1, image_path.length() - 3);
+        */
     }
 
     @Override
@@ -52,7 +60,6 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
         Property property = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
@@ -62,8 +69,7 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
         viewHolder.priceLabel.setText("à partir de " + String.valueOf(Math.round(property.getPrixMin())) + "€/nuit");
 
         //TODO:Gérer l'image principale du chateau
-        //viewHolder.mainImage.setImageDrawable(new ColorDrawable(property.getColor()));
-        Picasso.with(this.getContext()).load(property.getUrlImage()).into(viewHolder.mainImage);
+        Picasso.with(this.getContext()).load(IMAGE_PATH + property.getUrlImage()).into(viewHolder.mainImage);
 
         if (property.getVinRouge())
             viewHolder.winePic1.setImageResource(R.drawable.ic_glassredwine);
