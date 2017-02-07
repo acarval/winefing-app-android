@@ -23,7 +23,6 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
 
     private static final int NO_WIDTH = 0;
 
-    //tweets est la liste des models à afficher
     public PropertyAdapter(Context context, List<Property> properties) {
         super(context, 0, properties);
     }
@@ -52,7 +51,6 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
         Property property = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue

@@ -34,10 +34,7 @@ public class LocationsFromPropertyFragment extends Fragment {
         final ViewPager mViewPager = (ViewPager) myView.findViewById(R.id.property_slideshow);
         final AndroidImageAdapter adapterView = new AndroidImageAdapter(this.getActivity());
 
-
-
         mViewPager.setAdapter(adapterView);
-
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
