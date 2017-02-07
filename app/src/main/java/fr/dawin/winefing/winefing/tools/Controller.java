@@ -54,7 +54,7 @@ public class Controller {
         String url = API_URL + "/mobile/properties/"+ LANGUE +".json";
         return monService.get(url);
     }
-    
+
 
     public String getPropertyImagesPath(){
         StrictMode.setThreadPolicy(policy);

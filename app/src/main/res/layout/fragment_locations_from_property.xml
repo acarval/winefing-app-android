@@ -5,45 +5,200 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/property_slideshow"
                 android:layout_width="match_parent"
-                android:layout_height="210dp" />
+                android:layout_height="210dp" >
+            </android.support.v4.view.ViewPager>
 
-            <TextView
-                android:id="@+id/domain_name"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Oil"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Château du Clos du Prince"
-                android:layout_centerHorizontal="true" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp">
+
+                <TextView
+                    android:id="@+id/domain_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Oil"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Château du Clos du Prince"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/carac_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Oil"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="left"
+                    android:text="Caractéristiques"
+                    android:layout_centerHorizontal="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/grey"
+                    android:layout_gravity="center"
+                    android:layout_below="@id/infos_container"
+                    android:layout_centerHorizontal="true"/>
+
+                <LinearLayout
+                    android:id="@+id/carac_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Oil"
+                            android:textSize="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            android:text="Atelier assemblage"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Oil"
+                            android:textSize="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="right"
+                            android:text="Atelier vendanges"
+                            android:layout_weight="1"/>
 
 
-            <ListView
-                android:id="@+id/properties_list"
-                android:layout_below="@id/property_slideshow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:paddingTop="10dp">
-            </ListView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Oil"
+                            android:textSize="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            android:text="Dégustation comprise"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Oil"
+                            android:textSize="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="right"
+                            android:text="Petit déjeuner compris"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Oil"
+                            android:textSize="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            android:text="Table d'hôtes sur réservation"
+                            android:layout_weight="0.3"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Oil"
+                            android:textSize="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="right"
+                            android:text="Visite comprise"
+                            android:layout_weight="0.4"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/locations_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Oil"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="left"
+                    android:text="Nos chambres"
+                    android:layout_centerHorizontal="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/grey"
+                    android:layout_marginBottom="25dp"
+                    android:layout_gravity="center"
+                    android:layout_below="@id/infos_container"
+                    android:layout_centerHorizontal="true"/>
+
+                <ListView
+                    android:id="@+id/locations_list"
+                    android:layout_below="@id/property_slideshow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp">
+
+                </ListView>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
