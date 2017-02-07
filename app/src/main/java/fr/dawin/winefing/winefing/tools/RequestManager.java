@@ -71,6 +71,7 @@ public class RequestManager {
 
         try {
             urlConnection = (HttpURLConnection) request.openConnection();
+            urlConnection.setRequestMethod("GET");
             return readStream(urlConnection.getInputStream());
         } catch (Exception e) {
             e.printStackTrace();

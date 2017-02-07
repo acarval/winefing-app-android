@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import fr.dawin.winefing.winefing.R;
@@ -61,6 +63,7 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
 
         //TODO:Gérer l'image principale du chateau
         //viewHolder.mainImage.setImageDrawable(new ColorDrawable(property.getColor()));
+        Picasso.with(this.getContext()).load(property.getUrlImage()).into(viewHolder.mainImage);
 
         if (property.getVinRouge())
             viewHolder.winePic1.setImageResource(R.drawable.ic_glassredwine);
