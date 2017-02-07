@@ -119,15 +119,20 @@ public class PropertyFragment extends Fragment {
                     Log.e(TAG, "Position : " + position);
                     Log.e(TAG, "Parent : " + parent);
 
+                    Property clickedProperty =(Property) parent.getItemAtPosition(position);
+
+                    LocationsFromPropertyFragment fragLocations = new LocationsFromPropertyFragment();
+                    Bundle b = new Bundle();
+                    b.putParcelable("property", clickedProperty);
+                    fragLocations.setArguments(b);
+
                     android.app.FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction tx = fragmentManager.beginTransaction();
-                    tx.replace(R.id.content_frame, new LocationsFromPropertyFragment(), TAG)
+                    tx.replace(R.id.content_frame, fragLocations, TAG)
                         .addToBackStack(TAG)
                         .commit();
                 }
             });
-
-
         }
         return myView;
     }
