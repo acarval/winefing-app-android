@@ -1,8 +1,6 @@
 package fr.dawin.winefing.winefing.adapters;
 
-import android.app.Fragment;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -10,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import fr.dawin.winefing.winefing.R;
-import fr.dawin.winefing.winefing.fragments.LocationsFromPropertyFragment;
 
 /**
  * Created by vmorreel on 06/02/2017.
@@ -28,8 +25,7 @@ public class AndroidImageAdapter extends PagerAdapter {
         return sliderImagesId.length;
     }
 
-    private int[] sliderImagesId = new int[]{
-            R.drawable.mesreservations_background, R.drawable.decouvrir_background,
+    public int[] sliderImagesId = new int[]{
             R.drawable.mesreservations_background, R.drawable.decouvrir_background
     };
 

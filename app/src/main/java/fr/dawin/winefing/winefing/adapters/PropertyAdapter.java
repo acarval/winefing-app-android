@@ -23,7 +23,6 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
 
     private static final int NO_WIDTH = 0;
     //public Controller monController;
-    public static final String IMAGE_PATH = "https://dev.winefing.fr/winefing/web/Resources/pictures/property/";
 
     public PropertyAdapter(Context context, List<Property> properties) {
         super(context, 0, properties);
@@ -68,8 +67,7 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
         viewHolder.regionName.setText(property.getRegionName());
         viewHolder.priceLabel.setText("à partir de " + String.valueOf(Math.round(property.getPrixMin())) + "€/nuit");
 
-        //TODO:Gérer l'image principale du chateau
-        Picasso.with(this.getContext()).load(IMAGE_PATH + property.getUrlImage()).into(viewHolder.mainImage);
+        Picasso.with(this.getContext()).load(property.getUrlImage()).into(viewHolder.mainImage);
 
         if (property.getVinRouge())
             viewHolder.winePic1.setImageResource(R.drawable.ic_glassredwine);

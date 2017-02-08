@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,7 @@ public class LocationsFromPropertyFragment extends Fragment {
     private Controller monController;
 
     private static final String TAG = "LocationsPropertyFrag";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,8 +59,13 @@ public class LocationsFromPropertyFragment extends Fragment {
 
         // Afficher les infos de cette propriété
 
+        TextView domainName = (TextView)myView.findViewById(R.id.domain_name);
+        domainName.setText(property.getDomainName());
+
 
         // Afficher la listview des locations de cette propriété
+
+
 
 
         ArrayList<Location> locations = new ArrayList<Location>();
@@ -92,6 +99,7 @@ public class LocationsFromPropertyFragment extends Fragment {
 
         
 
+
         monController = new Controller();
 
         String result = monController.getProperties();
@@ -100,6 +108,7 @@ public class LocationsFromPropertyFragment extends Fragment {
         } else {
 
             // TODO utiliser cette location pour afficher infos
+        }
 
             final Handler handler = new Handler();
             Runnable runnable = new Runnable() {
@@ -122,7 +131,6 @@ public class LocationsFromPropertyFragment extends Fragment {
                 }
             };
             new Thread(runnable).start();
-        }
 
         return myView;
     }
