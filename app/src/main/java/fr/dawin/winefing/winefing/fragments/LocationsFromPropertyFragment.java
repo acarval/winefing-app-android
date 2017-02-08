@@ -8,14 +8,12 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.adapters.AndroidImageAdapter;
 import fr.dawin.winefing.winefing.classes.Property;
 import fr.dawin.winefing.winefing.tools.Controller;
-
-import static android.text.TextUtils.isDigitsOnly;
 
 /**
  * Created by vmorreel on 06/02/2017.
@@ -27,6 +25,7 @@ public class LocationsFromPropertyFragment extends Fragment {
     private Controller monController;
 
     private static final String TAG = "LocationsPropertyFrag";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,12 +44,15 @@ public class LocationsFromPropertyFragment extends Fragment {
 
         // Afficher les infos de cette propriété
 
+        TextView domainName = (TextView)myView.findViewById(R.id.domain_name);
+        domainName.setText(property.getDomainName());
+
 
         // Afficher la listview des locations de cette propriété
 
 
 
-
+/*
         monController = new Controller();
 
         String result = monController.getProperties();
@@ -58,8 +60,11 @@ public class LocationsFromPropertyFragment extends Fragment {
             Toast.makeText(getActivity(), "Une erreur est survenue", Toast.LENGTH_LONG).show();
         } else {
 
-        // TODO utiliser cette property pour afficher infos
+        }
 
+        */
+
+        // Peuplement du slideshow à partir des images
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override

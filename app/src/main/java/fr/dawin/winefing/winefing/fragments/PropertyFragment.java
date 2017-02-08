@@ -36,6 +36,7 @@ public class PropertyFragment extends Fragment {
     protected View myView;
     private Controller monController;
 
+    public static final String IMAGE_PATH = "https://dev.winefing.fr/winefing/web/Resources/pictures/property/";
     private static final String TAG = "PropertyFragment";
 
 
@@ -84,7 +85,7 @@ public class PropertyFragment extends Fragment {
 
                     String url_image;
                     if(json_data.has("media_presentation"))
-                        url_image = json_data.getString("media_presentation");
+                        url_image = IMAGE_PATH + json_data.getString("media_presentation");
                     else
                         url_image = "";
 
