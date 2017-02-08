@@ -9,6 +9,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -16,11 +17,15 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true">
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/property_slideshow"
+
+            <ImageView
+                android:id="@+id/main_image_location_x"
                 android:layout_width="match_parent"
-                android:layout_height="210dp" >
-            </android.support.v4.view.ViewPager>
+                android:layout_height="210dp"
+                android:layout_gravity="center"
+                android:background="@drawable/login_background"/>
+
+
 
             <LinearLayout
                 android:orientation="vertical"
@@ -30,17 +35,29 @@
                 android:layout_marginRight="25dp">
 
                 <TextView
-                    android:id="@+id/domain_name"
+                    android:id="@+id/room_location_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/Oil"
                     android:textStyle="bold"
                     android:textSize="25dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginBottom="25dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Château du Clos du Prince"
+                    android:text="Chambre Nouaison"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/domain_location_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Oil"
+                    android:textStyle="italic"
+                    android:layout_marginBottom="25dp"
+                    android:textSize="15dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Château de Camarsac, Le Clos du Prince"
                     android:layout_centerHorizontal="true" />
 
 
@@ -49,10 +66,50 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_glassgrey"/>
+                    android:background="@drawable/ic_castel"/>
 
                 <TextView
-                    android:id="@+id/carac_title"
+                    android:id="@+id/desc_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Oil"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="left"
+                    android:text="Description"
+                    android:layout_centerHorizontal="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/grey"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp">
+
+                    <TextView
+                        android:id="@+id/desc_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/Oil"
+                        android:textSize="15dp"
+                        android:lineSpacingExtra="5dp"
+                        android:gravity="left"
+                        android:text="Une très grande chambre à l’étage climatisée avec vue sur la piscine\nLits : 2 x 90 (aménageables en 1 x 180).\nUne salle de bain avec baignoire.\nW.C séparés.\nPossibilité de rajouter 1 lit complémentaire en 80 (20€/nuit) ou lit parapluie pour bébé (gratuit)."/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/carac_room_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/Oil"
@@ -79,48 +136,18 @@
                     android:layout_marginBottom="30dp">
 
                     <TextView
-                        android:id="@+id/carac_content"
+                        android:id="@+id/carac_room_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/Oil"
                         android:textSize="15dp"
                         android:lineSpacingExtra="5dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Atelier assemblage\nAtelier vendanges\nDégustation comprise\nPetit déjeuner compris\nTable d'hôtes sur réservation\nVisite comprise"/>
+                        android:gravity="left"
+                        android:text="Petit déjeuner compris."/>
 
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/locations_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/Oil"
-                    android:textStyle="italic"
-                    android:textSize="18dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="left"
-                    android:text="Nos chambres"
-                    android:layout_centerHorizontal="true" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dip"
-                    android:background="@color/grey"
-                    android:layout_marginBottom="25dp"
-                    android:layout_gravity="center"
-                    android:layout_centerHorizontal="true"/>
-
-                <ListView
-                    android:id="@+id/locations_list"
-                    android:layout_below="@id/property_slideshow"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="10dp">
-
-                </ListView>
 
             </LinearLayout>
 

@@ -102,7 +102,7 @@ public class PropertyFragment extends Fragment {
                         max_price = 0;
 
 
-                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, true, true, false, true, false));
+                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, true, true, true, false, false));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

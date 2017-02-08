@@ -39,7 +39,7 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
             viewHolder.locationMainImage = (ImageView) convertView.findViewById(R.id.main_image_location);
 
             viewHolder.locationName = (TextView) convertView.findViewById(R.id.location_name);
-            viewHolder.caracLocation = (TextView) convertView.findViewById(R.id.loacation_carac);
+            viewHolder.caracLocation = (TextView) convertView.findViewById(R.id.location_carac);
             viewHolder.priceLabel = (TextView) convertView.findViewById(R.id.location_price);
             viewHolder.nbPeopleLocation = (TextView) convertView.findViewById(R.id.nb_people_location);
 
