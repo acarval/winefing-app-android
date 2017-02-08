@@ -43,6 +43,15 @@
                     android:text="Château du Clos du Prince"
                     android:layout_centerHorizontal="true" />
 
+
+                <ImageView
+                    android:id="@+id/main_image_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_glassgrey"/>
+
                 <TextView
                     android:id="@+id/carac_title"
                     android:layout_width="match_parent"
@@ -61,7 +70,6 @@
                     android:layout_height="1dip"
                     android:background="@color/grey"
                     android:layout_gravity="center"
-                    android:layout_below="@id/infos_container"
                     android:layout_centerHorizontal="true"/>
 
                 <LinearLayout
@@ -185,7 +193,6 @@
                     android:background="@color/grey"
                     android:layout_marginBottom="25dp"
                     android:layout_gravity="center"
-                    android:layout_below="@id/infos_container"
                     android:layout_centerHorizontal="true"/>
 
                 <ListView
