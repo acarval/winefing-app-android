@@ -55,6 +55,13 @@ public class Controller {
         return monService.get(url);
     }
 
+    public String getLocationsFromProperty(int idProperty){
+        StrictMode.setThreadPolicy(policy);
+
+        monService = new RequestManager();
+        String url = API_URL + "/mobile/rentals/property/" + idProperty + "/" + LANGUE +".json";
+        return monService.get(url);
+    }
 
     public String getPropertyImagesPath(){
         StrictMode.setThreadPolicy(policy);

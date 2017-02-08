@@ -4,19 +4,18 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import android.widget.Toast;
 
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.adapters.AndroidImageAdapter;
 import fr.dawin.winefing.winefing.classes.Property;
+import fr.dawin.winefing.winefing.tools.Controller;
+
+import static android.text.TextUtils.isDigitsOnly;
 
 /**
  * Created by vmorreel on 06/02/2017.
@@ -25,6 +24,7 @@ import fr.dawin.winefing.winefing.classes.Property;
 public class LocationsFromPropertyFragment extends Fragment {
     View myView;
     Property property;
+    private Controller monController;
 
     private static final String TAG = "LocationsPropertyFrag";
     @Nullable
@@ -39,10 +39,28 @@ public class LocationsFromPropertyFragment extends Fragment {
 
         mViewPager.setAdapter(adapterView);
 
+        // Récupérer la propriété cliquée
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             property = bundle.getParcelable("property");
         }
+
+        // Afficher les infos de cette propriété
+
+
+        // Afficher la listview des locations de cette propriété
+
+
+
+
+        monController = new Controller();
+
+        String result = monController.getProperties();
+        if (result.equals("") || result == null || result.equals("error_server") || isDigitsOnly(result)) {
+            Toast.makeText(getActivity(), "Une erreur est survenue", Toast.LENGTH_LONG).show();
+        } else {
+
+        // TODO utiliser cette property pour afficher infos
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
