@@ -115,7 +115,7 @@
                     android:textColor="@color/Oil"
                     android:textStyle="italic"
                     android:textSize="18dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="left"
                     android:text="Caractéristiques"
@@ -148,6 +148,77 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/booking_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Oil"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="left"
+                    android:text="Demande de réservation"
+                    android:layout_centerHorizontal="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/grey"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="30dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/title_begin_booking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/Oil"
+                        android:textSize="15dp"
+                        android:lineSpacingExtra="5dp"
+                        android:gravity="left"
+                        android:text="Date de début :"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:ems="10"
+                        android:hint="(jj/mm/aaaa)"
+                        android:gravity="center"
+                        android:id="@+id/input_begin_booking" />
+
+                    <TextView
+                        android:id="@+id/title_end_booking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/Oil"
+                        android:textSize="15dp"
+                        android:layout_marginTop="10dp"
+                        android:lineSpacingExtra="5dp"
+                        android:gravity="left"
+                        android:text="Date de fin :"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:ems="10"
+                        android:hint="(jj/mm/aaaa)"
+                        android:gravity="center"
+                        android:id="@+id/input_end_booking" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 

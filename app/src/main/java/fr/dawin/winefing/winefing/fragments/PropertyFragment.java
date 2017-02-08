@@ -131,6 +131,7 @@ public class PropertyFragment extends Fragment {
                     tx.replace(R.id.content_frame, fragLocations, TAG)
                         .addToBackStack(TAG)
                         .commit();
+
                 }
             });
         }

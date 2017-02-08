@@ -1,11 +1,13 @@
 package fr.dawin.winefing.winefing.activities;
 
+import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,11 +17,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.classes.User;
+import fr.dawin.winefing.winefing.fragments.DatePickerFragment;
+import fr.dawin.winefing.winefing.fragments.LocationFragment;
 import fr.dawin.winefing.winefing.fragments.PropertyFragment;
 import fr.dawin.winefing.winefing.fragments.UserDashboardFragment;
 
@@ -28,7 +37,6 @@ public class UserDashboardActivity extends AppCompatActivity
     protected android.app.FragmentManager fragmentManager = getFragmentManager();
 
     private static final String TAG = "UserDashboardActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,7 @@ public class UserDashboardActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -144,6 +153,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
     public void bookingList(View view) {
         Log.e(TAG, "booking");
+
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_booking);
         Toast.makeText(getBaseContext(), "Disponible très bientôt !", Toast.LENGTH_LONG).show();
@@ -159,4 +169,5 @@ public class UserDashboardActivity extends AppCompatActivity
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_discover);
     }
+
 }
