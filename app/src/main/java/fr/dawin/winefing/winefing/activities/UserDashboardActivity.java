@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.classes.User;
@@ -145,6 +146,7 @@ public class UserDashboardActivity extends AppCompatActivity
         Log.e(TAG, "booking");
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_booking);
+        Toast.makeText(getBaseContext(), "Disponible très bientôt !", Toast.LENGTH_LONG).show();
     }
 
     public void propertiesList(View view) {
