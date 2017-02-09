@@ -217,6 +217,20 @@
                         android:gravity="center"
                         android:id="@+id/input_end_booking" />
 
+                    <Button
+                        android:id="@+id/button_booking"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/button_red"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:text="Envoyer la réservation"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:onClick="bookingSubmit"/>
+
 
                 </LinearLayout>
 

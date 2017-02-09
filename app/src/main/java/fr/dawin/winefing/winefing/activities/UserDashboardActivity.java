@@ -3,6 +3,8 @@ package fr.dawin.winefing.winefing.activities;
 import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -156,7 +159,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_booking);
-        Toast.makeText(getBaseContext(), "Disponible très bientôt !", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Bientôt disponible !", Toast.LENGTH_LONG).show();
     }
 
     public void propertiesList(View view) {
@@ -170,4 +173,12 @@ public class UserDashboardActivity extends AppCompatActivity
         navView.setCheckedItem(R.id.nav_discover);
     }
 
+    public void bookingSubmit(View view) {
+
+        new AlertDialog.Builder(UserDashboardActivity.this, R.style.WineFingTheme_Dialog)
+                .setTitle("Winefing")
+                .setMessage("Réservation effectuée !")
+                .setIcon(R.drawable.ic_menu_winelist_white)
+                .show();
+    }
 }
