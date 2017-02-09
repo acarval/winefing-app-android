@@ -8,12 +8,15 @@ import android.os.Parcelable;
  */
 
 public class Location implements Parcelable {
-    private int id;
 
+    private int id;
     private float prixChambre;
     private String nomChambre;
     private int nbPersonnes;
     private String urlImage;
+    private String nomDomaine;
+
+
 
     public Location() {
 
@@ -25,14 +28,24 @@ public class Location implements Parcelable {
         nomChambre = location.getNomChambre();
         urlImage = location.getUrlImage();
         nbPersonnes = location.getNbPersonnes();
+        nomDomaine = location.getNomDomaine();
     }
 
-    public Location(int id, float prixChambre, String nomChambre, String urlImage, int nbPersonnes) {
+    public Location(int id, float prixChambre, String nomChambre, String urlImage, int nbPersonnes, String nomDomaine) {
         this.id = id;
         this.prixChambre = prixChambre;
         this.nomChambre = nomChambre;
         this.urlImage = urlImage;
         this.nbPersonnes = nbPersonnes;
+        this.nomDomaine = nomDomaine;
+    }
+
+    public String getNomDomaine() {
+        return nomDomaine;
+    }
+
+    public void setNomDomaine(String nomDomaine) {
+        this.nomDomaine = nomDomaine;
     }
 
     public int getNbPersonnes() {
@@ -84,6 +97,7 @@ public class Location implements Parcelable {
         prixChambre = in.readFloat();
         nomChambre = in.readString();
         urlImage = in.readString();
+        nomDomaine = in.readString();
     }
 
     public static final Creator<Location> CREATOR = new Creator<Location>() {
@@ -109,5 +123,6 @@ public class Location implements Parcelable {
         dest.writeFloat(prixChambre);
         dest.writeString(nomChambre);
         dest.writeString(urlImage);
+        dest.writeString(nomDomaine);
     }
 }

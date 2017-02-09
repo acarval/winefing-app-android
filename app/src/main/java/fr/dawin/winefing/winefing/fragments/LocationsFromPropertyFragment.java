@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ import fr.dawin.winefing.winefing.adapters.AndroidImageAdapter;
 import fr.dawin.winefing.winefing.adapters.LocationFromPropertyAdapter;
 import fr.dawin.winefing.winefing.classes.Location;
 import fr.dawin.winefing.winefing.classes.Property;
-import fr.dawin.winefing.winefing.tools.Controller;
+import fr.dawin.winefing.winefing.utils.Controller;
 
 import static android.text.TextUtils.isDigitsOnly;
 
@@ -111,8 +110,10 @@ public class LocationsFromPropertyFragment extends Fragment {
                     else
                         url_image = "";
 
+                    String nomDomaine = property.getDomainName();
 
-                    locations.add(new Location(id, prixChambre, nomChambre, url_image, nbPersonne));
+
+                    locations.add(new Location(id, prixChambre, nomChambre, url_image, nbPersonne, nomDomaine));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -125,10 +126,6 @@ public class LocationsFromPropertyFragment extends Fragment {
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Log.e(TAG, "id : " + id);
-                    Log.e(TAG, "View : " + view);
-                    Log.e(TAG, "Position : " + position);
-                    Log.e(TAG, "Parent : " + parent);
 
                     Location clickedLocation = (Location) parent.getItemAtPosition(position);
 

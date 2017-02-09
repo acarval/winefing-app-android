@@ -18,7 +18,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.dawin.winefing.winefing.tools.Controller;
+import fr.dawin.winefing.winefing.utils.Controller;
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.classes.User;
 

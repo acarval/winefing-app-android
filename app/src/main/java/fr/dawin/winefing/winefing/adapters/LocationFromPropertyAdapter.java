@@ -36,6 +36,7 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
             viewHolder.locationMainImage = (ImageView) convertView.findViewById(R.id.main_image_location);
 
             viewHolder.locationName = (TextView) convertView.findViewById(R.id.location_name);
+            viewHolder.nomDomaineLocation = (TextView) convertView.findViewById(R.id.location_domain_name);
             viewHolder.priceLabel = (TextView) convertView.findViewById(R.id.location_price);
             viewHolder.nbPeopleLocation = (TextView) convertView.findViewById(R.id.nb_people_location);
 
@@ -46,8 +47,9 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
         Location location = getItem(position);
 
         viewHolder.locationName.setText(location.getNomChambre());
+        viewHolder.nomDomaineLocation.setText(location.getNomDomaine());
         viewHolder.nbPeopleLocation.setText(String.valueOf(location.getNbPersonnes()));
-        viewHolder.priceLabel.setText("à partir de " + String.valueOf(location.getPrixChambre()) + "€/nuit");
+        viewHolder.priceLabel.setText(String.valueOf(location.getPrixChambre()) + "€/nuit");
 
         return convertView;
     }
@@ -58,6 +60,7 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
         public TextView priceLabel;
         public TextView locationName;
         public TextView nbPeopleLocation;
+        public TextView nomDomaineLocation;
     }
 
 }
