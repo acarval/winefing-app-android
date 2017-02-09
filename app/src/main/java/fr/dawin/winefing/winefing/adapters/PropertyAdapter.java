@@ -22,17 +22,9 @@ import fr.dawin.winefing.winefing.classes.Property;
 public class PropertyAdapter extends ArrayAdapter<Property> {
 
     private static final int NO_WIDTH = 0;
-    //public Controller monController;
 
     public PropertyAdapter(Context context, List<Property> properties) {
         super(context, 0, properties);
-
-        //Pour récupérer l'URL où sont stockées les image depuis le webservice
-        /*monController = new Controller();
-        image_path = monController.getPropertyImagesPath();
-        image_path = image_path.replace("\\","");
-        image_path = image_path.substring(1, image_path.length() - 3);
-        */
     }
 
     @Override
