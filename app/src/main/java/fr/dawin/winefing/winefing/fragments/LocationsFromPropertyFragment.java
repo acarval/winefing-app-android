@@ -66,13 +66,10 @@ public class LocationsFromPropertyFragment extends Fragment {
         // Afficher la listview des locations de cette propriété
 
 
-
-
         ArrayList<Location> locations = new ArrayList<Location>();
 
         LocationFromPropertyAdapter adapter = new LocationFromPropertyAdapter(getActivity(), locations);
         mListView.setAdapter(adapter);
-
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -96,8 +93,6 @@ public class LocationsFromPropertyFragment extends Fragment {
                         .commit();
             }
         });
-
-        
 
 
         monController = new Controller();

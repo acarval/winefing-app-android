@@ -48,34 +48,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.3">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Oil"
-                android:textSize="15dp"
-                android:gravity="left"
-                android:text="Lit(s)"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/location_carac"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/Oil"
-                android:textSize="15dp"
-                android:gravity="right"
-                android:text="2 lits simples"
-                android:layout_weight="1"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:layout_marginTop="5dp">
 
