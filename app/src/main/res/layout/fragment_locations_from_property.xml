@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <ScrollView
+    <fr.dawin.winefing.winefing.utils.VerticalScrollView
+        android:id="@+id/scroll_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -113,9 +114,9 @@
                     android:layout_gravity="center"
                     android:layout_centerHorizontal="true"/>
 
+
                 <ListView
                     android:id="@+id/locations_list"
-                    android:layout_below="@id/property_slideshow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="10dp">
@@ -126,6 +127,8 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </fr.dawin.winefing.winefing.utils.VerticalScrollView>
+
+
 
 </RelativeLayout>

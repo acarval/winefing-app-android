@@ -20,7 +20,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import fr.dawin.winefing.winefing.tools.Controller;
+import fr.dawin.winefing.winefing.utils.Controller;
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.fragments.DatePickerFragment;
 

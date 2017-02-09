@@ -1,4 +1,4 @@
-package fr.dawin.winefing.winefing.tools;
+package fr.dawin.winefing.winefing.utils;
 
 import android.net.Uri;
 

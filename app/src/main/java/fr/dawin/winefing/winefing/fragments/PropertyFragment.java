@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import fr.dawin.winefing.winefing.tools.Controller;
+import fr.dawin.winefing.winefing.utils.Controller;
 import fr.dawin.winefing.winefing.classes.Property;
 import fr.dawin.winefing.winefing.adapters.PropertyAdapter;
 import fr.dawin.winefing.winefing.R;
