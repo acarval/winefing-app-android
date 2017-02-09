@@ -14,7 +14,6 @@ public class Location implements Parcelable {
     private String nomChambre;
     private int nbPersonnes;
     private String urlImage;
-    private String caracteristiques;
 
     public Location() {
 
@@ -25,16 +24,14 @@ public class Location implements Parcelable {
         prixChambre = location.getPrixChambre();
         nomChambre = location.getNomChambre();
         urlImage = location.getUrlImage();
-        caracteristiques = location.getCaracteristiques();
         nbPersonnes = location.getNbPersonnes();
     }
 
-    public Location(String caracteristiques, int id, float prixChambre, String nomChambre, String urlImage, int nbPersonnes) {
+    public Location(int id, float prixChambre, String nomChambre, String urlImage, int nbPersonnes) {
         this.id = id;
         this.prixChambre = prixChambre;
         this.nomChambre = nomChambre;
         this.urlImage = urlImage;
-        this.caracteristiques = caracteristiques;
         this.nbPersonnes = nbPersonnes;
     }
 
@@ -78,14 +75,6 @@ public class Location implements Parcelable {
         this.urlImage = urlImage;
     }
 
-    public String getCaracteristiques() {
-        return caracteristiques;
-    }
-
-    public void setCaracteristiques(String caracteristiques) {
-        this.caracteristiques = caracteristiques;
-    }
-
     public static Creator<Location> getCREATOR() {
         return CREATOR;
     }
@@ -95,7 +84,6 @@ public class Location implements Parcelable {
         prixChambre = in.readFloat();
         nomChambre = in.readString();
         urlImage = in.readString();
-        caracteristiques = in.readString();
     }
 
     public static final Creator<Location> CREATOR = new Creator<Location>() {
@@ -121,6 +109,5 @@ public class Location implements Parcelable {
         dest.writeFloat(prixChambre);
         dest.writeString(nomChambre);
         dest.writeString(urlImage);
-        dest.writeString(caracteristiques);
     }
 }
