@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import fr.dawin.winefing.winefing.R;
@@ -43,10 +45,14 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
             convertView.setTag(viewHolder);
         }
 
-
         Location location = getItem(position);
 
-        //Picasso.with(this.getContext()).load(location.getUrlImage()).fit().into(viewHolder.locationMainImage);
+        ImageView image_location = (ImageView) convertView.findViewById(R.id.main_image_location);
+        if(location.getUrlImage().equals(""))
+            image_location.setImageResource(R.drawable.default_image_location);
+        else
+            Picasso.with(this.getContext()).load(location.getUrlImage()).fit().into(image_location);
+        
         viewHolder.locationName.setText(location.getNomChambre());
         viewHolder.nomDomaineLocation.setText(location.getNomDomaine());
         viewHolder.nbPeopleLocation.setText(String.valueOf(location.getNbPersonnes()));

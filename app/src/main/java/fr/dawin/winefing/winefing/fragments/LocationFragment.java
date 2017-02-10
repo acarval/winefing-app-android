@@ -45,7 +45,7 @@ public class LocationFragment extends Fragment {
 
         ImageView image_location = (ImageView) myView.findViewById(R.id.main_image_location);
         if(location.getUrlImage().equals(""))
-            image_location.setImageResource(R.drawable.winefing_logo);
+            image_location.setImageResource(R.drawable.default_image_location);
         else
             Picasso.with(myContext).load(location.getUrlImage()).fit().into(image_location);
 
