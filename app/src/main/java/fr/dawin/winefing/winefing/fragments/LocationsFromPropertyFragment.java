@@ -2,17 +2,20 @@ package fr.dawin.winefing.winefing.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +25,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import fr.dawin.winefing.winefing.R;
-import fr.dawin.winefing.winefing.adapters.AndroidImageAdapter;
 import fr.dawin.winefing.winefing.adapters.LocationFromPropertyAdapter;
 import fr.dawin.winefing.winefing.classes.Location;
 import fr.dawin.winefing.winefing.classes.Property;
@@ -49,11 +51,6 @@ public class LocationsFromPropertyFragment extends Fragment {
         mListView = (ListView) myView.findViewById(R.id.locations_list);
 
 
-        final ViewPager mViewPager = (ViewPager) myView.findViewById(R.id.property_slideshow);
-        final AndroidImageAdapter adapterView = new AndroidImageAdapter(this.getActivity());
-
-        mViewPager.setAdapter(adapterView);
-
         // Récupérer la propriété cliquée
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -64,6 +61,11 @@ public class LocationsFromPropertyFragment extends Fragment {
 
         TextView domainName = (TextView) myView.findViewById(R.id.domain_name);
         domainName.setText(property.getDomainName());
+
+
+        Context mContext = getActivity().getApplicationContext();
+        ImageView property_main_image = (ImageView) myView.findViewById(R.id.property_main_image);
+        Picasso.with(mContext).load(property.getUrlImage()).fit().into(property_main_image);
 
 
         // Afficher la listview des locations de cette propriété
@@ -141,27 +143,7 @@ public class LocationsFromPropertyFragment extends Fragment {
                             .commit();
                 }
             });
-            final Handler handler = new Handler();
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < adapterView.getCount(); i++) {
-                        final int value = i;
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mViewPager.setCurrentItem(value, true);
-                            }
-                        });
-                    }
-                }
-            };
-            new Thread(runnable).start();
+
         }
         return myView;
     }
