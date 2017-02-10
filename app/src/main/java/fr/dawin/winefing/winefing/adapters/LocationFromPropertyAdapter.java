@@ -52,7 +52,7 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
             image_location.setImageResource(R.drawable.default_image_location);
         else
             Picasso.with(this.getContext()).load(location.getUrlImage()).fit().into(image_location);
-        
+
         viewHolder.locationName.setText(location.getNomChambre());
         viewHolder.nomDomaineLocation.setText(location.getNomDomaine());
         viewHolder.nbPeopleLocation.setText(String.valueOf(location.getNbPersonnes()));
