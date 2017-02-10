@@ -46,6 +46,7 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
 
         Location location = getItem(position);
 
+        //Picasso.with(this.getContext()).load(location.getUrlImage()).fit().into(viewHolder.locationMainImage);
         viewHolder.locationName.setText(location.getNomChambre());
         viewHolder.nomDomaineLocation.setText(location.getNomDomaine());
         viewHolder.nbPeopleLocation.setText(String.valueOf(location.getNbPersonnes()));
