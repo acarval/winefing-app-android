@@ -49,11 +49,11 @@ public class LocationFragment extends Fragment {
         else
             Picasso.with(myContext).load(location.getUrlImage()).fit().into(image_location);
 
-        TextView tv_description = (TextView) myView.findViewById(R.id.desc_content);
+        TextView tv_description = (TextView) myView.findViewById(R.id.nb_people_room);
         tv_description.setText(String.valueOf(location.getNbPersonnes()));
 
-        TextView tv_caract = (TextView) myView.findViewById(R.id.carac_room_content);
-        tv_caract.setText(String.valueOf(location.getPrixChambre()));
+        TextView tv_caract = (TextView) myView.findViewById(R.id.price_room);
+        tv_caract.setText(String.valueOf(location.getPrixChambre()) + "€/nuit");
 
         return myView;
     }
