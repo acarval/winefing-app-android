@@ -1,15 +1,11 @@
 package fr.dawin.winefing.winefing.activities;
 
-import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,18 +16,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.classes.User;
-import fr.dawin.winefing.winefing.fragments.DatePickerFragment;
-import fr.dawin.winefing.winefing.fragments.LocationFragment;
 import fr.dawin.winefing.winefing.fragments.PropertyFragment;
 import fr.dawin.winefing.winefing.fragments.UserDashboardFragment;
 
@@ -77,7 +66,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         View v = navigationView.getHeaderView(0);
         TextView tv_userName = (TextView) v.findViewById(R.id.textView_username);
-        tv_userName.setText(user.getPrenom() + " " + user.getNom());
+        tv_userName.setText("Bonjour, " + user.getPrenom() + " " + user.getNom());
     }
 
     @Override
