@@ -82,7 +82,7 @@
             android:id="@+id/profile_phone" />
 
         <TextView
-            android:text="Description : "
+            android:text="Date de naissance : "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
@@ -92,6 +92,27 @@
             android:layout_marginTop="15dp"
             android:textColor="@color/greyDark"
             android:id="@+id/textView2" />
+
+        <TextView
+            android:text="12/06/1987"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_image"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textColor="@color/Oil"
+            android:id="@+id/profile_birthdate" />
+
+        <TextView
+            android:text="Description : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_image"
+            android:layout_centerHorizontal="true"
+            android:textSize="15dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/greyDark" />
 
         <TextView
             android:text="Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit."
