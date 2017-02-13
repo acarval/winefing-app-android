@@ -15,7 +15,7 @@ public class Controller {
     public RequestManager monService;
 
     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); // Permet de réaliser les requêtes en Synchrone
-    public static final String LANGUE = Locale.getDefault().getDisplayLanguage();
+    public static final String LANGUE = Locale.getDefault().getLanguage();
 
 
     public String login(String email, String plainPassword){

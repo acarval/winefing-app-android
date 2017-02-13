@@ -26,7 +26,7 @@
     <string name="valid_mail">Enter a valid email address.</string>
     <string name="verify_input">Please verify the fields</string>
     <string name="wrong_mail_password">Wrong email or password</string>
-    <string name="from">From</string>
+    <string name="from">"From "</string>
     <string name="email_hint">Email</string>
     <string name="phone_input">Phone:</string>
     <string name="description_input">Description :</string>
