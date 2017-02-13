@@ -40,7 +40,6 @@
                     android:layout_marginBottom="25dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Château du Clos du Prince"
                     android:layout_centerHorizontal="true" />
 
 
