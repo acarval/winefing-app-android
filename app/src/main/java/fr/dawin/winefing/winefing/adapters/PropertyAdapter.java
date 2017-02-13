@@ -60,7 +60,11 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
         viewHolder.regionName.setText(property.getRegionName());
         viewHolder.priceLabel.setText("à partir de " + String.valueOf(property.getPrixMin()) + "€/nuit");
 
-        Picasso.with(this.getContext()).load(property.getUrlImage()).fit().into(viewHolder.mainImage);
+        ImageView image_property = (ImageView) convertView.findViewById(R.id.main_image);
+        if(property.getUrlImage().equals(""))
+            image_property.setImageResource(R.drawable.default_image);
+        else
+            Picasso.with(this.getContext()).load(property.getUrlImage()).fit().into(image_property);
 
         if (property.getVinRouge())
             viewHolder.winePic1.setImageResource(R.drawable.ic_glassredwine);
