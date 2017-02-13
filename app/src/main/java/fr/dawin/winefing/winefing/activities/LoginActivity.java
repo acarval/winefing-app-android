@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.dismiss();
             _loginButton.setEnabled(true);
             Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
-        }else if(result.equals("error_server")){
+        }else if(result.equals("error_server") || result.equals("")){
             progressDialog.dismiss();
             _loginButton.setEnabled(true);
             Toast.makeText(getBaseContext(), "Erreur de connexion au serveur.", Toast.LENGTH_LONG).show();

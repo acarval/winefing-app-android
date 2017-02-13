@@ -47,13 +47,12 @@ public class RequestManager {
             writer.flush();
             writer.close();
             os.close();
-            return readStream(urlConnection.getInputStream());
+            String result = readStream(urlConnection.getInputStream());
+            if(!result.equals(""))
+                return result;
+            else
+                return String.valueOf(urlConnection.getResponseCode());
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            return String.valueOf(urlConnection.getResponseCode());
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return "error_server";
