@@ -134,6 +134,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_discover) {
             tx.replace(R.id.content_frame, new PropertyFragment(), TAG)
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .addToBackStack(TAG)
                     .commit();
 
@@ -171,6 +172,7 @@ public class UserDashboardActivity extends AppCompatActivity
         Log.e(TAG, "properties");
         FragmentTransaction tx = fragmentManager.beginTransaction();
         tx.replace(R.id.content_frame, new PropertyFragment(), TAG)
+                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                 .addToBackStack(TAG)
                 .commit();
 
