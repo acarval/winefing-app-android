@@ -26,9 +26,19 @@ import fr.dawin.winefing.winefing.fragments.UserDashboardFragment;
 
 public class UserDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    public static final int REQUEST_USER_PROFILE = 666;
     protected android.app.FragmentManager fragmentManager = getFragmentManager();
 
     private static final String TAG = "UserDashboardActivity";
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_USER_PROFILE) {
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,7 +122,8 @@ public class UserDashboardActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_profile) {
-
+            Intent userIntent = new Intent(getApplicationContext(), UserProfileActivity.class);
+            startActivityForResult(userIntent, REQUEST_USER_PROFILE);
 
         } else if (id == R.id.nav_booking) {
 
@@ -148,6 +159,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_booking);
+
         Toast.makeText(getBaseContext(), "Bientôt disponible !", Toast.LENGTH_LONG).show();
     }
 

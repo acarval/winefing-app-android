@@ -14,6 +14,26 @@ public class User implements Parcelable {
     private String prenom;
     private String nom;
     private String telephone;
+    private String urlImage;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
     private String dateNaissance;
     private String description;
 
@@ -28,20 +48,24 @@ public class User implements Parcelable {
         telephone = user.getTelephone();
         dateNaissance = user.getDateNaissance();
         description = user.getDescription();
+        urlImage = user.getUrlImage();
+        email = user.getEmail();
     }
 
     //token
-    public User(int id, String prenom, String nom, String telephone, String dateNaissance, String description, String photoProfil) {
+    public User(int id, String prenom, String nom, String telephone, String dateNaissance, String description, String urlImage, String email) {
         this.id = id;
         //this.token = token;
         this.prenom = prenom;
         this.nom = nom;
         this.telephone = telephone;
         this.dateNaissance = dateNaissance;
+        this.urlImage = urlImage;
         this.description = description;
+        this.email = email;
     }
     // token
-    public void setUserAttr(int id, String prenom, String nom, String telephone, String dateNaissance, String description){
+    public void setUserAttr(int id, String prenom, String nom, String telephone, String dateNaissance, String description, String urlImage, String email){
         this.id = id;
         //this.token = token;
         this.prenom = prenom;
@@ -49,6 +73,8 @@ public class User implements Parcelable {
         this.telephone = telephone;
         this.dateNaissance = dateNaissance;
         this.description = description;
+        this.urlImage = urlImage;
+        this.email = email;
     }
 
     /** Deux méthodes afin de convertir cette classe en Parcelable
@@ -68,7 +94,9 @@ public class User implements Parcelable {
         dest.writeString(nom);
         dest.writeString(telephone);
         dest.writeString(dateNaissance);
-        dest.writeString(description);;
+        dest.writeString(description);
+        dest.writeString(urlImage);
+        dest.writeString(email);
     }
 
     public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>()
@@ -94,6 +122,8 @@ public class User implements Parcelable {
         this.telephone = in.readString();
         this.dateNaissance = in.readString();
         this.description = in.readString();
+        this.urlImage = in.readString();
+        this.email = in.readString();
     }
 
     public int getId() {

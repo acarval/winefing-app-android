@@ -106,7 +106,8 @@
                 android:id="@+id/check_newsletter"
                 android:textColor="@color/white"
                 android:buttonTint="@color/white"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
             <View
                 android:layout_width="210dp"
