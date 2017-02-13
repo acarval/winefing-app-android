@@ -19,6 +19,7 @@ import fr.dawin.winefing.winefing.classes.Location;
  * Created by vmorreel on 02/02/2017.
  */
 
+// Permet d'afficher dynamiquement des éléments selon un modèle (card_location ici)
 public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
 
     public LocationFromPropertyAdapter(Context context, List<Location> locations) {
@@ -49,7 +50,7 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
 
         ImageView image_location = (ImageView) convertView.findViewById(R.id.main_image_location);
         if(location.getUrlImage().equals(""))
-            image_location.setImageResource(R.drawable.default_image_location);
+            image_location.setImageResource(R.drawable.default_image);
         else
             Picasso.with(this.getContext()).load(location.getUrlImage()).fit().into(image_location);
 

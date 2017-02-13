@@ -47,23 +47,26 @@ public class LoginActivity extends AppCompatActivity {
         String email="";
         String plainPassword ="";
 
+        // Récupération de l'utilitaire permettant de récupérer des données de login si elles ont été enregistrées auparavant
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
 
-
+        // Récupération d'un potentiel email stocké sur le téléphone
         email = loginPreferences.getString("email", "");
+
         if(email.length() != 0 && email != null) {
+            //L'email est présent, donc on récupère également le mot de passe et on identifie automatiquement l'user
             plainPassword = loginPreferences.getString("plainPassword", "");
             logUserAutomatically(email, plainPassword);
         }
     }
-
 
     public void signUp(View view) {
         Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
         startActivityForResult(signupIntent, REQUEST_SIGNUP);
     }
 
+    //Permet de log automatiquement l'utilisateur
     public void logUserAutomatically(String email, String plainPassword) {
 
         String result = monController.login(email, plainPassword);
@@ -79,11 +82,12 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             try {
-                user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description", "urlImage", "email@email.com");
+                getUserInfos(user, jObject);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
+            // On lance l'activité Dashboard avec pour paramètre l'utilisateur connecté
             Intent signupIntent = new Intent(getApplicationContext(), UserDashboardActivity.class);
             signupIntent.putExtra("user", (Parcelable) user);
             startActivityForResult(signupIntent, REQUEST_SIGNUP);
@@ -91,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
+    // Permet de log un User à partir du formulaire de connexion
     public void login(View view) {
         InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -134,10 +138,12 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             try {
-                user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description", "urlImage", "email@email.com");
+                getUserInfos(user, jObject);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            //Stockage des données de l'utilisateur qui se connecte afin qu'il se connecte automatiquement les prochaines fois
             loginPrefsEditor.putString("email", email);
             loginPrefsEditor.putString("plainPassword", plainPassword);
             loginPrefsEditor.commit();
@@ -149,6 +155,54 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }, 2000);
             }
+    }
+
+    private void getUserInfos(User user, JSONObject jObject) throws JSONException {
+        int id = jObject.getInt("id");
+
+        String first_name;
+        if(jObject.has("first_name"))
+            first_name = jObject.getString("first_name");
+        else
+            first_name = "";
+
+        String last_name;
+        if(jObject.has("last_name"))
+            last_name = jObject.getString("last_name");
+        else
+            last_name = "";
+
+        String telephone;
+        if(jObject.has("phone_number"))
+            telephone = jObject.getString("phone_number");
+        else
+            telephone = "";
+
+        String date_naissance;
+        if(jObject.has("birth_date"))
+            date_naissance = jObject.getString("birth_date");
+        else
+            date_naissance = "";
+
+        String description;
+        if(jObject.has("description"))
+            description = jObject.getString("description");
+        else
+            description = "";
+
+        String urlImage;
+        if(jObject.has("picture"))
+            urlImage = jObject.getString("picture");
+        else
+            urlImage = "";
+
+        String emailUser;
+        if(jObject.has("email"))
+            emailUser = jObject.getString("email");
+        else
+            emailUser = "";
+
+        user.setUserAttr(id, first_name, last_name, telephone, date_naissance, description, urlImage, emailUser);
     }
 
     @Override
@@ -180,7 +234,7 @@ public class LoginActivity extends AppCompatActivity {
         _loginButton.setEnabled(true);
     }
 
-
+    // Validation des champs du formulaire
     private boolean validate(EditText _emailInput, EditText _passwordInput) {
         boolean valid = true;
 

@@ -9,7 +9,6 @@ import java.util.Locale;
  * Created by Greg on 31/01/2017.
  */
 
-// 1 méthode par requête à faire
 public class Controller {
 
     public static final String API_URL = "https://dev.winefing.fr/winefing/web/app_dev.php/api";
@@ -63,11 +62,12 @@ public class Controller {
         return monService.get(url);
     }
 
-    public String getPropertyImagesPath(){
+    /*public String getPropertyImagesPath(){
         StrictMode.setThreadPolicy(policy);
 
         monService = new RequestManager();
         String url = API_URL + "/property/media/path.json";
         return monService.get(url);
     }
+    */
 }

@@ -19,6 +19,7 @@ import fr.dawin.winefing.winefing.classes.Property;
  * Created by vmorreel on 02/02/2017.
  */
 
+// Permet d'afficher dynamiquement des éléments selon un modèle (card_property ici)
 public class PropertyAdapter extends ArrayAdapter<Property> {
 
     private static final int NO_WIDTH = 0;
@@ -59,7 +60,11 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
         viewHolder.regionName.setText(property.getRegionName());
         viewHolder.priceLabel.setText("à partir de " + String.valueOf(property.getPrixMin()) + "€/nuit");
 
-        Picasso.with(this.getContext()).load(property.getUrlImage()).fit().into(viewHolder.mainImage);
+        ImageView image_property = (ImageView) convertView.findViewById(R.id.main_image);
+        if(property.getUrlImage().equals(""))
+            image_property.setImageResource(R.drawable.default_image);
+        else
+            Picasso.with(this.getContext()).load(property.getUrlImage()).fit().into(image_property);
 
         if (property.getVinRouge())
             viewHolder.winePic1.setImageResource(R.drawable.ic_glassredwine);
