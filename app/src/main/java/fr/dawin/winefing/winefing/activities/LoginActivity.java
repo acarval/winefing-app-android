@@ -124,11 +124,11 @@ public class LoginActivity extends AppCompatActivity {
         if(result.equals("204")) {
             progressDialog.dismiss();
             _loginButton.setEnabled(true);
-            Toast.makeText(getBaseContext(), "Mauvais email ou mot de passe.", Toast.LENGTH_LONG).show();
-        }else if(result.equals("error_server")){
+            Toast.makeText(getBaseContext(), R.string.wrong_mail_password, Toast.LENGTH_LONG).show();
+        }else if(result.equals("error_server") || result.equals("")){
             progressDialog.dismiss();
             _loginButton.setEnabled(true);
-            Toast.makeText(getBaseContext(), "Erreur de connexion au serveur.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), R.string.error_connecting_server, Toast.LENGTH_LONG).show();
         }else{
             final User user = new User();
             JSONObject jObject = null;
@@ -215,7 +215,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
             else {
-                Toast.makeText(getBaseContext(), "Erreur lors de l'inscription, veuillez réessayer.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), R.string.error_inscription, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -230,7 +230,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void onLoginFailed(Button _loginButton) {
-        Toast.makeText(getBaseContext(), "La connexion a échoué", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), R.string.connexion_failed, Toast.LENGTH_LONG).show();
         _loginButton.setEnabled(true);
     }
 
@@ -242,7 +242,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = _passwordInput.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailInput.setError("Entrez une adresse mail valide.");
+            _emailInput.setError(getString(R.string.valid_mail));
             valid = false;
         }
         else {
@@ -250,7 +250,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (password.isEmpty()) {
-            _passwordInput.setError("Vous devez saisir votre mot de passe !");
+            _passwordInput.setError(getString(R.string.type_password));
             valid = false;
         } else {
             _passwordInput.setError(null);

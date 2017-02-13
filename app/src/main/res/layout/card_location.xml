@@ -35,7 +35,7 @@
                 android:textColor="@color/Oil"
                 android:textSize="15dp"
                 android:gravity="left"
-                android:text="Invités"
+                android:text="@string/guest"
                 android:layout_weight="1"/>
 
             <TextView
@@ -52,7 +52,7 @@
     </LinearLayout>
 
     <TextView
-        android:text="Réserver"
+        android:text="@string/book"
         android:background="@drawable/button_red"
         android:textAllCaps="false"
         android:textColor="@color/white"

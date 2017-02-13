@@ -82,7 +82,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         View v = navigationView.getHeaderView(0);
         TextView tv_userName = (TextView) v.findViewById(R.id.textView_username);
-        tv_userName.setText("Bonjour, " + user.getPrenom() + " " + user.getNom());
+        tv_userName.setText(getString(R.string.hi) + user.getPrenom() + " " + user.getNom());
     }
 
     @Override
@@ -133,7 +133,7 @@ public class UserDashboardActivity extends AppCompatActivity
             startActivityForResult(userIntent, REQUEST_USER_PROFILE);
 
         } else if (id == R.id.nav_booking) {
-
+            Toast.makeText(getBaseContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
 
         } else if (id == R.id.nav_discover) {
             tx.replace(R.id.content_frame, new PropertyFragment(), TAG)
@@ -168,7 +168,7 @@ public class UserDashboardActivity extends AppCompatActivity
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_booking);
 
-        Toast.makeText(getBaseContext(), "Bientôt disponible !", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), R.string.coming_soon, Toast.LENGTH_LONG).show();
     }
 
     public void propertiesList(View view) {
@@ -187,7 +187,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         new AlertDialog.Builder(UserDashboardActivity.this, R.style.WineFingTheme_Dialog)
                 .setTitle("Winefing")
-                .setMessage("Réservation effectuée !")
+                .setMessage(R.string.booking_validated)
                 .setIcon(R.drawable.ic_menu_winelist_white)
                 .show();
     }

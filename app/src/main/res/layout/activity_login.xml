@@ -36,7 +36,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/email_hint"
             android:id="@+id/input_email"
             android:inputType="textEmailAddress"
             android:layout_marginTop="30dp"
@@ -48,7 +48,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mot de passe"
+            android:hint="@string/password_hint"
             android:id="@+id/input_password"
             android:inputType="textPassword"
             android:layout_marginTop="20dp"
@@ -66,7 +66,7 @@
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:background="@drawable/button_red"
-            android:text="Se connecter"
+            android:text="@string/connect"
             android:elevation="0dp"
             android:onClick="login" />
 
@@ -80,7 +80,7 @@
 
 
         <TextView
-            android:text="Pas encore inscrit ?"
+            android:text="@string/not_registered"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout"
@@ -99,7 +99,7 @@
             android:textAllCaps="false"
             android:background="@drawable/button_red"
             android:id="@+id/btn_signup"
-            android:text="Inscription"
+            android:text="@string/register"
             android:onClick="signUp"/>
 
     </LinearLayout>

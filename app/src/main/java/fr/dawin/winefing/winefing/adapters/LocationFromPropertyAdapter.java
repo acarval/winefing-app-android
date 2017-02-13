@@ -57,7 +57,7 @@ public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
         viewHolder.locationName.setText(location.getNomChambre());
         viewHolder.nomDomaineLocation.setText(location.getNomDomaine());
         viewHolder.nbPeopleLocation.setText(String.valueOf(location.getNbPersonnes()));
-        viewHolder.priceLabel.setText(String.valueOf(location.getPrixChambre()) + "€/nuit");
+        viewHolder.priceLabel.setText(String.valueOf(location.getPrixChambre()) + getContext().getString(R.string.price_per_night));
 
         return convertView;
     }

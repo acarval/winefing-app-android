@@ -85,8 +85,8 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         Calendar minAdultAge = new GregorianCalendar();
         minAdultAge.add(Calendar.YEAR, -18);
         if (minAdultAge.before(userAge)) {
-            _birthDateButton.setError("Vous devez avoir plus de 18 ans.");
-            Toast.makeText(getBaseContext(), "Vous devez avoir plus de 18 ans.", Toast.LENGTH_LONG).show();
+            _birthDateButton.setError(getString(R.string.minimum_age));
+            Toast.makeText(getBaseContext(), R.string.minimum_age, Toast.LENGTH_LONG).show();
         }
         else
         {
@@ -134,11 +134,11 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
             if(result.equals("") || result == null || result.equals("error_server")){
                 progressDialog.dismiss();
                 _signupButton.setEnabled(true);
-                Toast.makeText(getBaseContext(), "Erreur lors de l'inscription, veuillez réessayer", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), R.string.error_inscription, Toast.LENGTH_LONG).show();
             }else if(result.equals( "409")){
                 progressDialog.dismiss();
                 _signupButton.setEnabled(true);
-                Toast.makeText(getBaseContext(), "Cet email possède déjà un compte", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), R.string.already_registered, Toast.LENGTH_LONG).show();
             }else{
                 new android.os.Handler().postDelayed(
                         new Runnable() {
@@ -158,7 +158,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
     }
 
     public void onSignupFailed(Button _signupButton) {
-        Toast.makeText(getBaseContext(), "Veuillez vérifier la saisie des différents champs.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), R.string.verify_input, Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
     }
@@ -175,40 +175,40 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         String birthDate = _birthDateButton.getHint().toString();
 
         if (firstname.isEmpty() || firstname.length() < 2) {
-            _firstNameInput.setError("Il faut au moins 2 caractères.");
+            _firstNameInput.setError(getString(R.string.minimum_length));
             valid = false;
         } else {
             _firstNameInput.setError(null);
         }
 
         if (lastname.isEmpty() || lastname.length() < 2) {
-            _lastNameInput.setError("Il faut au moins 2 caractères.");
+            _lastNameInput.setError(getString(R.string.minimum_length));
             valid = false;
         } else {
             _lastNameInput.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailInput.setError("Entrez une adresse email valide.");
+            _emailInput.setError(getString(R.string.valid_mail));
             valid = false;
         } else {
             _emailInput.setError(null);
         }
 
         if (birthDate.isEmpty() || HAS_MINIMUM_AGE==false) {
-            _birthDateButton.setError("Vous devez avoir plus de 18 ans.");
+            _birthDateButton.setError(getString(R.string.minimum_age));
             valid = false;
         }
 
         if (plainPassword.isEmpty() ) {
-            _plainPasswordInput.setError("Vous devez saisir votre mot de passe !");
+            _plainPasswordInput.setError(getString(R.string.type_password));
             valid = false;
         } else {
             _plainPasswordInput.setError(null);
         }
 
         if (reEnterPassword.isEmpty() || !(reEnterPassword.equals(plainPassword))) {
-            _plainPasswordInputConfirm.setError("Les mots de passe doivent correspondre !");
+            _plainPasswordInputConfirm.setError(getString(R.string.same_password));
             valid = false;
         } else {
             _plainPasswordInputConfirm.setError(null);
