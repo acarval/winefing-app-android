@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -30,6 +31,7 @@ import fr.dawin.winefing.winefing.fragments.UserDashboardFragment;
 public class UserDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static final int REQUEST_USER_PROFILE = 666;
+    public User user;
     protected android.app.FragmentManager fragmentManager = getFragmentManager();
 
     private static final String TAG = "UserDashboardActivity";
@@ -76,7 +78,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         //Récupération de la variable User passée en paramètre après le login
         Bundle extra = getIntent().getExtras();
-        User user = extra.getParcelable("user");
+        user = extra.getParcelable("user");
 
         View v = navigationView.getHeaderView(0);
         TextView tv_userName = (TextView) v.findViewById(R.id.textView_username);
@@ -127,6 +129,7 @@ public class UserDashboardActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
             Intent userIntent = new Intent(getApplicationContext(), UserProfileActivity.class);
+            userIntent.putExtra("user", (Parcelable) user);
             startActivityForResult(userIntent, REQUEST_USER_PROFILE);
 
         } else if (id == R.id.nav_booking) {
