@@ -139,7 +139,39 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             try {
-                user.setUserAttr(jObject.getInt("id"), jObject.getString("first_name"), jObject.getString("last_name"), "telephone", "date naissance", "description");
+                int id = jObject.getInt("id");
+
+                String first_name;
+                if(jObject.has("first_name"))
+                    first_name = jObject.getString("first_name");
+                else
+                    first_name = "";
+
+                String last_name;
+                if(jObject.has("last_name"))
+                    last_name = jObject.getString("last_name");
+                else
+                    last_name = "";
+
+                String telephone;
+                if(jObject.has("phone_number"))
+                    telephone = jObject.getString("phone_number");
+                else
+                    telephone = "";
+
+                String date_naissance;
+                if(jObject.has("birth_date"))
+                    date_naissance = jObject.getString("birth_date");
+                else
+                    date_naissance = "";
+
+                String description;
+                if(jObject.has("description"))
+                    description = jObject.getString("description");
+                else
+                    description = "";
+
+                user.setUserAttr(id, first_name, last_name, telephone, date_naissance, description);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
