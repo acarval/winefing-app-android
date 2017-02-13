@@ -51,6 +51,7 @@ public class PropertyFragment extends Fragment {
 
         monController = new Controller();
 
+        // Récupération des propriétés
         String result = monController.getProperties();
         if (result.equals("") || result == null || result.equals("error_server") || isDigitsOnly(result)) {
             Toast.makeText(getActivity(), "Une erreur est survenue", Toast.LENGTH_LONG).show();
@@ -101,13 +102,14 @@ public class PropertyFragment extends Fragment {
                     else
                         max_price = 0;
 
-
+                    // Ajout au tableau de propriétés
                     properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, true, true, true, false, false));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
+            //Appel à l'adapter de propriétés pour afficher dynamiquement chacune
             PropertyAdapter adapter = new PropertyAdapter(getActivity(), properties);
             mListView.setAdapter(adapter);
 

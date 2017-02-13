@@ -24,6 +24,9 @@ import fr.dawin.winefing.winefing.classes.User;
 import fr.dawin.winefing.winefing.fragments.PropertyFragment;
 import fr.dawin.winefing.winefing.fragments.UserDashboardFragment;
 
+/* Cette classe est l'activité principale de l'application une fois l'utilisateur connecté.
+    Elle comporte le menu de navigation, et sera ensuite peuplée de fragments qui correspondent aux vues de l'application
+    (liste des propriétés, vue d'une location...) */
 public class UserDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     protected android.app.FragmentManager fragmentManager = getFragmentManager();
@@ -61,6 +64,7 @@ public class UserDashboardActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
+        //Récupération de la variable User passée en paramètre après le login
         Bundle extra = getIntent().getExtras();
         User user = extra.getParcelable("user");
 

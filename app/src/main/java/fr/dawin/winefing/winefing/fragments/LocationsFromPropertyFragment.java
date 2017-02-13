@@ -5,7 +5,6 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +57,6 @@ public class LocationsFromPropertyFragment extends Fragment {
         }
 
         // Afficher les infos de cette propriété
-
         TextView domainName = (TextView) myView.findViewById(R.id.domain_name);
         domainName.setText(property.getDomainName());
 

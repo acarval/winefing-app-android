@@ -19,6 +19,7 @@ import fr.dawin.winefing.winefing.classes.Location;
  * Created by vmorreel on 02/02/2017.
  */
 
+// Permet d'afficher dynamiquement des éléments selon un modèle (card_location ici)
 public class LocationFromPropertyAdapter extends ArrayAdapter<Location> {
 
     public LocationFromPropertyAdapter(Context context, List<Location> locations) {

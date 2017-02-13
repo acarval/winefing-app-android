@@ -163,6 +163,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         _signupButton.setEnabled(true);
     }
 
+    // Validation des champs du formulaire
     public boolean validate(EditText _firstNameInput, EditText _lastNameInput, EditText _emailInput, EditText _plainPasswordInput, EditText _plainPasswordInputConfirm, Button _birthDateButton) {
         boolean valid = true;
 

@@ -19,6 +19,7 @@ import fr.dawin.winefing.winefing.classes.Property;
  * Created by vmorreel on 02/02/2017.
  */
 
+// Permet d'afficher dynamiquement des éléments selon un modèle (card_property ici)
 public class PropertyAdapter extends ArrayAdapter<Property> {
 
     private static final int NO_WIDTH = 0;

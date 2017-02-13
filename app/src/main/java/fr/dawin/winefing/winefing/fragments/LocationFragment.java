@@ -37,6 +37,8 @@ public class LocationFragment extends Fragment {
             location = bundle.getParcelable("location");
         }
 
+        // Peuplement des éléments du fragment à partir de la location passée en paramètres
+
         TextView tv_roomName = (TextView) myView.findViewById(R.id.room_location_name);
         tv_roomName.setText(location.getNomChambre());
 
