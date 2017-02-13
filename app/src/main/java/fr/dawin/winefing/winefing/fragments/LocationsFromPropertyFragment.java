@@ -41,6 +41,8 @@ public class LocationsFromPropertyFragment extends Fragment {
     Property property;
     private Controller monController;
 
+    public static final String IMAGE_PATH = "https://dev.winefing.fr/winefing/web/Resources/pictures/rental/";
+
     private static final String TAG = "LocationsPropertyFrag";
 
     @Nullable
@@ -106,7 +108,7 @@ public class LocationsFromPropertyFragment extends Fragment {
 
                     String url_image;
                     if (json_data.has("media_presentation"))
-                        url_image = json_data.getString("media_presentation");
+                        url_image = IMAGE_PATH + json_data.getString("media_presentation");
                     else
                         url_image = "";
 

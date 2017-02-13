@@ -1,19 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">WineFing</string>
-
-    <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>
-    <string name="navigation_drawer_close">Fermer le menu de navigation</string>
-
     <string name="action_settings">Paramètres</string>
+    <string name="navigation_drawer_close">Fermer le menu de navigation</string>
+    <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>
     <string name="title_activity_user_dashboard">Tableau de bord</string>
-    <string name="title_activity_properties" translatable="false">PropertiesActivity</string>
-    <string name="title_activity_navigation" translatable="false">NavigationActivity</string>
-    <string name="title_activity_user_profile" translatable="false">UserProfileActivity</string>
     <string name="home_menu">Accueil</string>
     <string name="profile_menu">Profil</string>
     <string name="booking_menu">Mes réservations</string>
     <string name="discover_menu">Découvrir</string>
-    <string name="winelist_menu" translatable="false">WineList</string>
     <string name="disconnect_menu">Déconnexion</string>
     <string name="wrong_mail_password">Mauvais email ou mot de passe.</string>
     <string name="error_connecting_server">Erreur de connexion au serveur.</string>
@@ -51,7 +45,6 @@
     <string name="guest">Invités</string>
     <string name="book">Réserver</string>
     <string name="email_input">Email :</string>
-    <string name="phone_input">Phone :</string>
     <string name="birthdate_input">Date de naissance :</string>
     <string name="description_input">Description :</string>
     <string name="description">Description</string>
@@ -63,4 +56,5 @@
     <string name="carac">Caractéristiques</string>
     <string name="our_room">Nos chambres</string>
     <string name="properties">Les propriétés</string>
+    <string name="phone_input">Téléphone :</string>
 </resources>

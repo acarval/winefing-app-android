@@ -55,7 +55,7 @@ public class LocationFragment extends Fragment {
         tv_description.setText(String.valueOf(location.getNbPersonnes()));
 
         TextView tv_caract = (TextView) myView.findViewById(R.id.price_room);
-        tv_caract.setText(String.valueOf(location.getPrixChambre()) + "€/nuit");
+        tv_caract.setText(String.valueOf(location.getPrixChambre()) + getString(R.string.price_per_night));
 
         return myView;
     }

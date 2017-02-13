@@ -60,7 +60,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="left"
-                    android:text="Caractéristiques"
+                    android:text="@string/carac"
                     android:layout_centerHorizontal="true" />
 
                 <View
@@ -101,7 +101,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="left"
-                    android:text="Nos chambres"
+                    android:text="@string/our_room"
                     android:layout_centerHorizontal="true" />
 
                 <View

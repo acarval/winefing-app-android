@@ -54,7 +54,7 @@ public class PropertyFragment extends Fragment {
         // Récupération des propriétés
         String result = monController.getProperties();
         if (result.equals("") || result == null || result.equals("error_server") || isDigitsOnly(result)) {
-            Toast.makeText(getActivity(), "Une erreur est survenue", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_LONG).show();
         } else {
             ArrayList<Property> properties = new ArrayList<Property>();
             JSONObject jObject = null;
@@ -117,10 +117,6 @@ public class PropertyFragment extends Fragment {
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Log.e(TAG, "id : " + id);
-                    Log.e(TAG, "View : " + view);
-                    Log.e(TAG, "Position : " + position);
-                    Log.e(TAG, "Parent : " + parent);
 
                     Property clickedProperty =(Property) parent.getItemAtPosition(position);
 

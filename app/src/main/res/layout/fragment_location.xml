@@ -117,7 +117,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="left"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:layout_centerHorizontal="true" />
 
                 <View
@@ -158,7 +158,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="left"
-                    android:text="Demande de réservation"
+                    android:text="@string/booking_request"
                     android:layout_centerHorizontal="true" />
 
                 <View
@@ -186,14 +186,14 @@
                         android:textSize="15dp"
                         android:lineSpacingExtra="5dp"
                         android:gravity="left"
-                        android:text="Date de début :"/>
+                        android:text="@string/beginning_date_input"/>
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="date"
                         android:ems="10"
-                        android:hint="(jj/mm/aaaa)"
+                        android:hint="@string/date_format"
                         android:gravity="center"
                         android:id="@+id/input_begin_booking" />
 
@@ -206,14 +206,14 @@
                         android:layout_marginTop="10dp"
                         android:lineSpacingExtra="5dp"
                         android:gravity="left"
-                        android:text="Date de fin :"/>
+                        android:text="@string/ending_date"/>
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="date"
                         android:ems="10"
-                        android:hint="(jj/mm/aaaa)"
+                        android:hint="@string/date_format"
                         android:gravity="center"
                         android:id="@+id/input_end_booking" />
 
@@ -226,7 +226,7 @@
                         android:background="@drawable/button_red"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:text="Envoyer la réservation"
+                        android:text="@string/send_booking"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:onClick="bookingSubmit"/>

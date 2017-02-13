@@ -7,7 +7,7 @@
         android:id="@+id/properties_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Les propriétés"
+        android:text="@string/properties"
         android:textColor="@color/Oil"
         android:textSize="30dp"
         android:layout_marginTop="20dp"

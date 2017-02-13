@@ -5,28 +5,28 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_home"
-            android:title="Accueil" />
+            android:title="@string/home_menu" />
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_menu_profile"
-            android:title="Profil" />
+            android:title="@string/profile_menu" />
         <item
             android:id="@+id/nav_booking"
             android:icon="@drawable/ic_menu_booking"
-            android:title="Mes réservations" />
+            android:title="@string/booking_menu" />
         <item
             android:id="@+id/nav_discover"
             android:icon="@drawable/ic_menu_discover"
-            android:title="Découvrir" />
+            android:title="@string/discover_menu" />
         <item
             android:id="@+id/nav_winelist"
             android:icon="@drawable/ic_menu_winelist"
-            android:title="WineList" />
+            android:title="@string/winelist_menu" />
 
         <item
             android:id="@+id/nav_disconnect"
             android:icon="@drawable/ic_menu_disconnect"
-            android:title="Déconnexion" />
+            android:title="@string/disconnect_menu" />
     </group>
 
 </menu>

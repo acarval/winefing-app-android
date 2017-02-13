@@ -39,7 +39,7 @@
         android:layout_marginRight="40dp">
 
         <TextView
-            android:text="Email : "
+            android:text="@string/email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
@@ -59,7 +59,7 @@
             android:id="@+id/profile_email" />
 
         <TextView
-            android:text="Phone : "
+            android:text="@string/phone_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
@@ -79,7 +79,7 @@
             android:id="@+id/profile_phone" />
 
         <TextView
-            android:text="Date de naissance : "
+            android:text="@string/birthdate_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
@@ -100,7 +100,7 @@
             android:id="@+id/profile_birthdate" />
 
         <TextView
-            android:text="Description : "
+            android:text="@string/description_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"

@@ -58,7 +58,7 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
 
         viewHolder.domainName.setText(property.getDomainName());
         viewHolder.regionName.setText(property.getRegionName());
-        viewHolder.priceLabel.setText("à partir de " + String.valueOf(property.getPrixMin()) + "€/nuit");
+        viewHolder.priceLabel.setText(getContext().getString(R.string.from) + String.valueOf(property.getPrixMin()) + getContext().getString(R.string.price_per_night));
 
         ImageView image_property = (ImageView) convertView.findViewById(R.id.main_image);
         if(property.getUrlImage().equals(""))

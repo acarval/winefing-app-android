@@ -23,7 +23,7 @@
             android:id="@+id/logo" />
 
         <TextView
-            android:text="En utilisant l’application WineFing, vous reconnaissez et accepter les conditions générales d’utilisation mise en place par notre structure. Pour plus d’informations, n’hésitez pas à les consulter en cliquant sur le bouton."
+            android:text="@string/cgu_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/Oil"
@@ -41,7 +41,7 @@
             android:layout_gravity="center"
             android:textAllCaps="false"
             android:onClick="openCGU"
-            android:text="Voir les CGU"
+            android:text="@string/see_cgu"
             android:gravity="center"/>
 
     </LinearLayout>
@@ -63,7 +63,7 @@
 
 
             <Button
-                android:text="Refuser"
+                android:text="@string/denied"
                 android:layout_marginLeft="40dp"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -81,7 +81,7 @@
                 android:layout_centerHorizontal="true"/>
 
             <Button
-                android:text="Accepter"
+                android:text="@string/accept"
                 android:layout_marginRight="40dp"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
