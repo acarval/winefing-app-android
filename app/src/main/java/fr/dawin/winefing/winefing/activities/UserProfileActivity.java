@@ -51,8 +51,8 @@ public class UserProfileActivity extends AppCompatActivity {
         TextView tv_description = (TextView) findViewById(R.id.profile_description);
         tv_description.setText(user.getDescription());
 
-        //TextView tv_birthDate = (TextView) findViewById(R.id.XXX);
-        //tv_birthDate.setText(user.getDateNaissance());
+        TextView tv_birthDate = (TextView) findViewById(R.id.profile_birthdate);
+        tv_birthDate.setText(user.getDateNaissance());
     }
 
     @Override

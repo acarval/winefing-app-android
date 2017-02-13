@@ -18,7 +18,6 @@
         android:layout_marginTop="25dp" />
 
     <TextView
-        android:text="Valentin Morreel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_image"
@@ -50,7 +49,6 @@
             android:textColor="@color/greyDark" />
 
         <TextView
-            android:text="valentin.morreel@nooope.me"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
@@ -72,7 +70,6 @@
             android:textColor="@color/greyDark" />
 
         <TextView
-            android:text="(+33) 6 45 43 91 12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
@@ -94,7 +91,6 @@
             android:id="@+id/textView2" />
 
         <TextView
-            android:text="12/06/1987"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
@@ -115,7 +111,6 @@
             android:textColor="@color/greyDark" />
 
         <TextView
-            android:text="Batnae municipium in Anthemusia conditum Macedonum manu priscorum ab Euphrate flumine brevi spatio disparatur, refertum mercatoribus opulentis, ubi annua sollemnitate prope Septembris initium mensis ad nundinas magna promiscuae fortunae convenit."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_image"
