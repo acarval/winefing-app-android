@@ -110,6 +110,7 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         final EditText _emailInput = (EditText) findViewById(R.id.input_emailConfirm);
         final EditText _plainPasswordInput = (EditText) findViewById(R.id.input_password);
         final EditText _plainPasswordInputConfirm = (EditText) findViewById(R.id.input_confirm_password);
+        final Button _birthDate = (Button) findViewById(R.id.btn_birthdate);
 
         Log.d(TAG, "Signup");
 
@@ -128,8 +129,9 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
         String lastName = _lastNameInput.getText().toString();
         String email = _emailInput.getText().toString();
         String password = _plainPasswordInput.getText().toString();
+        String birthDate = _birthDate.getHint().toString();
 
-        String result = monController.register(firstName, lastName, email, password);
+        String result = monController.register(firstName, lastName, email, password, birthDate);
 
             if(result.equals("") || result == null || result.equals("error_server")){
                 progressDialog.dismiss();

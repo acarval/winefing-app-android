@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,10 +19,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import fr.dawin.winefing.winefing.utils.Controller;
-import fr.dawin.winefing.winefing.classes.Property;
-import fr.dawin.winefing.winefing.adapters.PropertyAdapter;
 import fr.dawin.winefing.winefing.R;
+import fr.dawin.winefing.winefing.adapters.PropertyAdapter;
+import fr.dawin.winefing.winefing.classes.Property;
+import fr.dawin.winefing.winefing.utils.Controller;
 
 import static android.text.TextUtils.isDigitsOnly;
 
@@ -102,8 +102,21 @@ public class PropertyFragment extends Fragment {
                     else
                         max_price = 0;
 
+                    boolean vinRouge = false, vinBlanc= false, vinRose =false, vinSpiritueux = false;
+                    JSONArray characts = json_data.getJSONObject("domain").getJSONArray("characteristic_values");
+                    for(int i=0; i<=characts.length()-1; i++) {
+                        String wine_characts = characts.getJSONObject(i).getJSONObject("characteristic").getString("code");
+                        switch (wine_characts){
+                            case "RED_WINE": vinRouge = true;
+                            case "WHITE_WINE": vinBlanc = true;
+                            case "ROSE_WINE": vinRose = true;
+                            case "LIQUEUR_WINE": vinSpiritueux = true;
+                        }
+
+                    }
+
                     // Ajout au tableau de propriétés
-                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, true, true, true, false, false));
+                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, vinRouge, vinBlanc, vinRose, vinSpiritueux));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
