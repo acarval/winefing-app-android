@@ -85,11 +85,12 @@ public class PropertyAdapter extends ArrayAdapter<Property> {
             viewHolder.winePic4.setImageResource(R.drawable.ic_glasssweetwine);
         else
             viewHolder.winePic4.setMaxWidth(NO_WIDTH);
-        if (property.getVinBulles())
+        /*if (property.getVinBulles())
             //TODO: Changer par la bonne icône, pb de chargement avec l'ancienne
             viewHolder.winePic5.setImageResource(R.drawable.ic_glasswhitewine);
         else
             viewHolder.winePic5.setMaxWidth(NO_WIDTH);
+            */
 
         return convertView;
     }

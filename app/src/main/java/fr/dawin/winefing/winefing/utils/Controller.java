@@ -31,7 +31,7 @@ public class Controller {
 
     }
 
-    public String register(String firstName, String lastName, String email, String password) {
+    public String register(String firstName, String lastName, String email, String password, String birthDate) {
         StrictMode.setThreadPolicy(policy);
 
         monService = new RequestManager();
@@ -41,6 +41,7 @@ public class Controller {
         requestParams.put("lastName", lastName);
         requestParams.put("email", email);
         requestParams.put("password", password);
+        requestParams.put("birth_date", birthDate);
         requestParams.put("roles", "ROLE_USER");
 
         return monService.post(url, requestParams);

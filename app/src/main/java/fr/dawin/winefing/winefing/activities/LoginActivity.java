@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
     public void logUserAutomatically(String email, String plainPassword) {
 
         String result = monController.login(email, plainPassword);
-        if (result.equals("error_server")) {
+        if (result.equals("error_server") || result.equals("204")) {
             Toast.makeText(getBaseContext(), "Erreur de connexion au serveur.", Toast.LENGTH_LONG).show();
         } else {
 

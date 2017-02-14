@@ -20,7 +20,7 @@ public class Property implements Parcelable {
     private Boolean vinBlanc;
     private Boolean vinRose;
     private Boolean vinSpiritueux;
-    private Boolean vinBulles;
+    //private Boolean vinBulles;
 
 
     public Property() {
@@ -38,10 +38,10 @@ public class Property implements Parcelable {
         vinBlanc = property.getVinBlanc();
         vinRose = property.getVinRose();
         vinSpiritueux = property.getVinSpiritueux();
-        vinBulles = property.getVinBulles();
+        //vinBulles = property.getVinBulles();
     }
 
-    public Property(int id, String domainName, String regionName, String urlImage, float prixMin, float prixMax, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux, Boolean vinBulles) {
+    public Property(int id, String domainName, String regionName, String urlImage, float prixMin, float prixMax, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux) {
         this.id = id;
         this.nomDomaine = domainName;
         this.nomRegion = regionName;
@@ -52,7 +52,7 @@ public class Property implements Parcelable {
         this.vinBlanc = vinBlanc;
         this.vinRose = vinRose;
         this.vinSpiritueux = vinSpiritueux;
-        this.vinBulles = vinBulles;
+        //this.vinBulles = vinBulles;
     }
 
     @Override
@@ -128,9 +128,10 @@ public class Property implements Parcelable {
         return vinSpiritueux;
     }
 
-    public Boolean getVinBulles() {
+    /*public Boolean getVinBulles() {
         return vinBulles;
     }
+    */
 
     public void setId(int id) {
         this.id = id;
@@ -166,9 +167,10 @@ public class Property implements Parcelable {
         this.vinSpiritueux = vinSpiritueux;
     }
 
-    public void setVinBulles(Boolean vinBulles) {
+    /*public void setVinBulles(Boolean vinBulles) {
         this.vinBulles = vinBulles;
     }
+    */
 
     public void setDomainName(String domainName) {
         this.nomDomaine = domainName;
