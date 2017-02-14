@@ -4,6 +4,7 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -44,9 +46,15 @@ public class SignupActivity extends AppCompatActivity implements OnDateSetListen
 
         monController = new Controller();
 
-
         Intent cguIntent = new Intent(getApplicationContext(), LegalMentionsActivity.class);
         startActivityForResult(cguIntent, 1000);
+
+        Typeface hind = Typeface.createFromAsset(getAssets(), "Hind/Hind-Regular.ttf");
+
+        Button btnSignUp = (Button) findViewById(R.id.btn_signupConfirm);
+        btnSignUp.setTypeface(hind);
+        CheckBox newsletter = (CheckBox) findViewById(R.id.check_newsletter);
+        newsletter.setTypeface(hind);
     }
 
     @Override

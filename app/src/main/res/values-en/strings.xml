@@ -49,7 +49,7 @@
     <string name="cgu_content">By using the WineFing application, you recognize and accept general terms of use implementation by our structure. For more information, do not hesitate to consult them by clicking the button.</string>
     <string name="connect">Connect</string>
     <string name="date_format">(mm/dd/yyyy)</string>
-    <string name="denied">Deny</string>
+    <string name="denied">Decline</string>
     <string name="email_input">Email:</string>
     <string name="ending_date">Ending date:</string>
     <string name="firstname_hint">Firstname</string>

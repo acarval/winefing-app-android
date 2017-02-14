@@ -1,12 +1,15 @@
 package fr.dawin.winefing.winefing.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 
 import fr.dawin.winefing.winefing.R;
 
@@ -27,6 +30,18 @@ public class LegalMentionsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_legal_mentions);
+
+
+        Typeface hind = Typeface.createFromAsset(getAssets(), "Hind/Hind-Regular.ttf");
+        TextView titleCGU = (TextView) findViewById(R.id.title_cgu);
+        titleCGU.setTypeface(hind);
+
+        Button btnAccept = (Button) findViewById(R.id.btn_accept_cgu);
+        btnAccept.setTypeface(hind);
+        Button btnDecline = (Button) findViewById(R.id.btn_decline_cgu);
+        btnDecline.setTypeface(hind);
+        Button btnSeeCGU = (Button) findViewById(R.id.see_cgu);
+        btnSeeCGU.setTypeface(hind);
     }
 
     @Override

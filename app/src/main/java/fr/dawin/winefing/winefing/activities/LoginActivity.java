@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -59,6 +63,15 @@ public class LoginActivity extends AppCompatActivity {
             plainPassword = loginPreferences.getString("plainPassword", "");
             logUserAutomatically(email, plainPassword);
         }
+
+        Typeface hind = Typeface.createFromAsset(getAssets(), "Hind/Hind-Regular.ttf");
+
+        Button btnLogUp = (Button) findViewById(R.id.btn_signup);
+        btnLogUp.setTypeface(hind);
+        Button btnLogIn = (Button) findViewById(R.id.btn_login);
+        btnLogIn.setTypeface(hind);
+        TextView registerYet = (TextView) findViewById(R.id.register_baseline);
+        registerYet.setTypeface(hind);
     }
 
     public void signUp(View view) {

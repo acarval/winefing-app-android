@@ -86,7 +86,7 @@
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:id="@+id/textView"
+            android:id="@+id/register_baseline"
             android:gravity="center" />
 
         <Button
