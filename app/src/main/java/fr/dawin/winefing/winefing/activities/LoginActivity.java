@@ -22,9 +22,15 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.dawin.winefing.winefing.utils.Controller;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.classes.User;
+import fr.dawin.winefing.winefing.utils.Controller;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -192,8 +198,18 @@ public class LoginActivity extends AppCompatActivity {
             telephone = "";
 
         String date_naissance;
-        if(jObject.has("birth_date"))
+        if(jObject.has("birth_date")){
             date_naissance = jObject.getString("birth_date");
+            try {
+                DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                Date date = formatter.parse(date_naissance);
+                date_naissance = String.valueOf(date);
+                SimpleDateFormat newFormat = new SimpleDateFormat("dd-MM-yyyy");
+                date_naissance = newFormat.format(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         else
             date_naissance = "";
 

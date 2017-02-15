@@ -102,10 +102,38 @@ public class PropertyFragment extends Fragment {
                     else
                         max_price = 0;
 
+                    String caracts = "";
+                    String name = null;
+                    String value = null;
+                    JSONArray caractsProperty = json_data.getJSONArray("characteristic_values");
+                    for(int i=0; i<=caractsProperty.length()-1; i++){
+                        if(!caractsProperty.getJSONObject(i).getString("value").equals("0")){
+                            if(caractsProperty.getJSONObject(i).getJSONObject("characteristic").getJSONObject("format").getString("name").equals("BOOLEAN")){
+                                 name = caractsProperty.getJSONObject(i).getJSONObject("characteristic").getString("name");
+                                caracts += name + "\n";
+                            }
+
+                            if(caractsProperty.getJSONObject(i).getJSONObject("characteristic").getJSONObject("format").getString("name").equals("MONNAIE")){
+                                 name = caractsProperty.getJSONObject(i).getJSONObject("characteristic").getString("name");
+                                 value = caractsProperty.getJSONObject(i).getString("value") + "€";
+                                caracts += name + " " + value + "\n";
+
+
+                            }
+
+                            if(caractsProperty.getJSONObject(i).getJSONObject("characteristic").getJSONObject("format").getString("name").equals("TIME")){
+                                 name = caractsProperty.getJSONObject(i).getJSONObject("characteristic").getString("name");
+                                 value = caractsProperty.getJSONObject(i).getString("value")+ "h";
+                                caracts += name + " " + value + "\n";
+
+                            }
+                        }
+                    }
+
                     boolean vinRouge = false, vinBlanc= false, vinRose =false, vinSpiritueux = false;
-                    JSONArray characts = json_data.getJSONObject("domain").getJSONArray("characteristic_values");
-                    for(int i=0; i<=characts.length()-1; i++) {
-                        String wine_characts = characts.getJSONObject(i).getJSONObject("characteristic").getString("code");
+                    JSONArray caractsVin = json_data.getJSONObject("domain").getJSONArray("characteristic_values");
+                    for(int i=0; i<=caractsVin.length()-1; i++) {
+                        String wine_characts = caractsVin.getJSONObject(i).getJSONObject("characteristic").getString("code");
                         switch (wine_characts){
                             case "RED_WINE": vinRouge = true;
                             case "WHITE_WINE": vinBlanc = true;
@@ -116,7 +144,7 @@ public class PropertyFragment extends Fragment {
                     }
 
                     // Ajout au tableau de propriétés
-                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, vinRouge, vinBlanc, vinRose, vinSpiritueux));
+                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, caracts, vinRouge, vinBlanc, vinRose, vinSpiritueux));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

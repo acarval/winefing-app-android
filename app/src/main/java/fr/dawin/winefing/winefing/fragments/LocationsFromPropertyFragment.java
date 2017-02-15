@@ -62,6 +62,9 @@ public class LocationsFromPropertyFragment extends Fragment {
         TextView domainName = (TextView) myView.findViewById(R.id.domain_name);
         domainName.setText(property.getDomainName());
 
+        TextView caracts = (TextView) myView.findViewById(R.id.carac_content);
+        caracts.setText(property.getCaracteristiques());
+
 
         Context mContext = getActivity().getApplicationContext();
         ImageView property_main_image = (ImageView) myView.findViewById(R.id.property_main_image);
@@ -114,8 +117,28 @@ public class LocationsFromPropertyFragment extends Fragment {
 
                     String nomDomaine = property.getDomainName();
 
+                    String description = "";
+                    String name = null;
+                    String value = null;
+                    JSONArray caractsProperty = json_data.getJSONArray("characteristic_values");
+                    for(int j=0; j<=caractsProperty.length()-1; j++){
+                        if(!caractsProperty.getJSONObject(j).getString("value").equals("0")){
+                            if(caractsProperty.getJSONObject(j).getJSONObject("characteristic").getJSONObject("format").getString("name").equals("BOOLEAN")){
+                                name = caractsProperty.getJSONObject(j).getJSONObject("characteristic").getString("name");
+                                description += name + "\n";
+                            }
 
-                    locations.add(new Location(id, prixChambre, nomChambre, url_image, nbPersonne, nomDomaine));
+                            if(caractsProperty.getJSONObject(j).getJSONObject("characteristic").getJSONObject("format").getString("name").equals("INT")){
+                                name = caractsProperty.getJSONObject(j).getJSONObject("characteristic").getString("name");
+                                value = caractsProperty.getJSONObject(j).getString("value");
+                                description += name + " : " + value + "\n";
+                                
+                            }
+                        }
+                    }
+
+
+                    locations.add(new Location(id, prixChambre, nomChambre, url_image, nbPersonne, nomDomaine, description));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
