@@ -62,6 +62,9 @@ public class LocationsFromPropertyFragment extends Fragment {
         TextView domainName = (TextView) myView.findViewById(R.id.domain_name);
         domainName.setText(property.getDomainName());
 
+        TextView caracts = (TextView) myView.findViewById(R.id.carac_content);
+        caracts.setText(property.getCaracteristiques());
+
 
         Context mContext = getActivity().getApplicationContext();
         ImageView property_main_image = (ImageView) myView.findViewById(R.id.property_main_image);

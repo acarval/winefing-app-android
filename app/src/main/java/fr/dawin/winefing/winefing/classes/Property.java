@@ -15,6 +15,7 @@ public class Property implements Parcelable {
     private String urlImage;
     private float prixMin;
     private float prixMax;
+    private String caracteristiques;
 
     private Boolean vinRouge;
     private Boolean vinBlanc;
@@ -34,6 +35,7 @@ public class Property implements Parcelable {
         urlImage = property.getUrlImage();
         prixMin = property.getPrixMin();
         prixMax = property.getPrixMax();
+        caracteristiques = property.getCaracteristiques();
         vinRouge = property.getVinRouge();
         vinBlanc = property.getVinBlanc();
         vinRose = property.getVinRose();
@@ -41,13 +43,14 @@ public class Property implements Parcelable {
         //vinBulles = property.getVinBulles();
     }
 
-    public Property(int id, String domainName, String regionName, String urlImage, float prixMin, float prixMax, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux) {
+    public Property(int id, String domainName, String regionName, String urlImage, float prixMin, float prixMax, String caracteristiques, Boolean vinRouge, Boolean vinBlanc, Boolean vinRose, Boolean vinSpiritueux) {
         this.id = id;
         this.nomDomaine = domainName;
         this.nomRegion = regionName;
         this.urlImage = urlImage;
         this.prixMin = prixMin;
         this.prixMax = prixMax;
+        this.caracteristiques = caracteristiques;
         this.vinRouge = vinRouge;
         this.vinBlanc = vinBlanc;
         this.vinRose = vinRose;
@@ -68,6 +71,7 @@ public class Property implements Parcelable {
         dest.writeString(urlImage);
         dest.writeFloat(prixMin);
         dest.writeFloat(prixMax);
+        dest.writeString(caracteristiques);
     }
 
     public static final Creator<Property> CREATOR = new Creator<Property>() {
@@ -89,6 +93,7 @@ public class Property implements Parcelable {
         urlImage = in.readString();
         prixMin = in.readFloat();
         prixMax = in.readFloat();
+        caracteristiques = in.readString();
     }
 
 
@@ -111,6 +116,8 @@ public class Property implements Parcelable {
     public float getPrixMin(){ return prixMin; };
 
     public float getPrixMax(){ return prixMax; };
+
+    public String getCaracteristiques() {return caracteristiques;}
 
     public Boolean getVinRouge() {
         return vinRouge;
@@ -150,6 +157,8 @@ public class Property implements Parcelable {
     public void setPrixMin(){ this.prixMin = prixMin;}
 
     public void setPrixMax(){ this.prixMax = prixMax;}
+
+    public void setCaracteristiques(String caracteristiques) { this.caracteristiques = caracteristiques;}
 
     public void setVinRouge(Boolean vinRouge) {
         this.vinRouge = vinRouge;
