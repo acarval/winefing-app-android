@@ -144,7 +144,7 @@ public class PropertyFragment extends Fragment {
                     }
 
                     // Ajout au tableau de propriétés
-                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, caracts.toString(), vinRouge, vinBlanc, vinRose, vinSpiritueux));
+                    properties.add(new Property(id, domain_name, region_name, url_image, min_price, max_price, caracts, vinRouge, vinBlanc, vinRose, vinSpiritueux));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
