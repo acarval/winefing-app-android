@@ -22,6 +22,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import fr.dawin.winefing.winefing.R;
 import fr.dawin.winefing.winefing.classes.User;
@@ -187,9 +188,11 @@ public class LoginActivity extends AppCompatActivity {
         if(jObject.has("birth_date")){
             date_naissance = jObject.getString("birth_date");
             try {
-                DateFormat formatter = new SimpleDateFormat("DD-MM-yyyy");
+                DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                 Date date = formatter.parse(date_naissance);
                 date_naissance = String.valueOf(date);
+                SimpleDateFormat newFormat = new SimpleDateFormat("dd-MM-yyyy");
+                date_naissance = newFormat.format(date);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
